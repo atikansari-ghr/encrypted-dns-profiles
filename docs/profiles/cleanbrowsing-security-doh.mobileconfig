@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>DNSSettings</key>
+			<dict>
+				<key>DNSProtocol</key>
+				<string>HTTPS</string>
+				<key>ServerAddresses</key>
+				<array>
+					<string>185.228.168.9</string>
+					<string>185.228.169.9</string>
+				</array>
+				<key>ServerURL</key>
+				<string>https://doh.cleanbrowsing.org/doh/security-filter/</string>
+			</dict>
+			<key>PayloadDisplayName</key>
+			<string>CleanBrowsing - Security Filter (DoH)</string>
+			<key>PayloadIdentifier</key>
+			<string>com.atikansari.dns.cleanbrowsing-security-doh.settings</string>
+			<key>PayloadOrganization</key>
+			<string>Atik Ansari</string>
+			<key>PayloadType</key>
+			<string>com.apple.dnsSettings.managed</string>
+			<key>PayloadUUID</key>
+			<string>83318468-31D8-5BC0-BB1B-D5B8946A3F4A</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Blocks malware and phishing domains. Operated by CleanBrowsing. Does not block advertising or adult content.
+
+Blocks: Malware and phishing - does not block ads.
+Transport: DNS-over-HTTPS.
+Provider: https://cleanbrowsing.org/filters/</string>
+	<key>PayloadDisplayName</key>
+	<string>CleanBrowsing - Security Filter (DoH)</string>
+	<key>PayloadIdentifier</key>
+	<string>com.atikansari.dns.cleanbrowsing-security-doh</string>
+	<key>PayloadOrganization</key>
+	<string>Atik Ansari</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>5580BB06-A604-565D-9BBF-457FA7C0EB33</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

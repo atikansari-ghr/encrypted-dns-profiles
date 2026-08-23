@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>DNSSettings</key>
+			<dict>
+				<key>DNSProtocol</key>
+				<string>TLS</string>
+				<key>ServerAddresses</key>
+				<array>
+					<string>185.228.168.168</string>
+					<string>185.228.169.168</string>
+				</array>
+				<key>ServerName</key>
+				<string>family-filter-dns.cleanbrowsing.org</string>
+			</dict>
+			<key>PayloadDisplayName</key>
+			<string>CleanBrowsing - Family Filter (DoT)</string>
+			<key>PayloadIdentifier</key>
+			<string>com.atikansari.dns.cleanbrowsing-family-dot.settings</string>
+			<key>PayloadOrganization</key>
+			<string>Atik Ansari</string>
+			<key>PayloadType</key>
+			<string>com.apple.dnsSettings.managed</string>
+			<key>PayloadUUID</key>
+			<string>BDD5CBC7-B90B-5FAE-8FE0-9CF94841754F</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Blocks adult content and enforces safe search on major search engines. Operated by CleanBrowsing. Does not block advertising.
+
+Blocks: Adult content, and enforces safe search.
+Transport: DNS-over-TLS.
+Provider: https://cleanbrowsing.org/filters/</string>
+	<key>PayloadDisplayName</key>
+	<string>CleanBrowsing - Family Filter (DoT)</string>
+	<key>PayloadIdentifier</key>
+	<string>com.atikansari.dns.cleanbrowsing-family-dot</string>
+	<key>PayloadOrganization</key>
+	<string>Atik Ansari</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>C6D96DE7-80A4-5634-B8BE-212E261F0EAC</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

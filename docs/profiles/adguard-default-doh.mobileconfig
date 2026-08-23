@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>DNSSettings</key>
+			<dict>
+				<key>DNSProtocol</key>
+				<string>HTTPS</string>
+				<key>ServerAddresses</key>
+				<array>
+					<string>94.140.14.14</string>
+					<string>94.140.15.15</string>
+				</array>
+				<key>ServerURL</key>
+				<string>https://dns.adguard-dns.com/dns-query</string>
+			</dict>
+			<key>PayloadDisplayName</key>
+			<string>AdGuard DNS - Ad Blocking (DoH)</string>
+			<key>PayloadIdentifier</key>
+			<string>com.atikansari.dns.adguard-default-doh.settings</string>
+			<key>PayloadOrganization</key>
+			<string>Atik Ansari</string>
+			<key>PayloadType</key>
+			<string>com.apple.dnsSettings.managed</string>
+			<key>PayloadUUID</key>
+			<string>0BA39894-21D4-599E-ADE9-0A0F49D6599C</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Blocks advertising and tracking domains across every app on the device. Operated by AdGuard Software Limited. The public resolver does not log queries.
+
+Blocks: Ads and trackers.
+Transport: DNS-over-HTTPS.
+Provider: https://adguard-dns.io/</string>
+	<key>PayloadDisplayName</key>
+	<string>AdGuard DNS - Ad Blocking (DoH)</string>
+	<key>PayloadIdentifier</key>
+	<string>com.atikansari.dns.adguard-default-doh</string>
+	<key>PayloadOrganization</key>
+	<string>Atik Ansari</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>18703791-6744-5AE0-B2A0-E5B23203363E</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

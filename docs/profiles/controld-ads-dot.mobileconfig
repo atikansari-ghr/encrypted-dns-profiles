@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>DNSSettings</key>
+			<dict>
+				<key>DNSProtocol</key>
+				<string>TLS</string>
+				<key>ServerAddresses</key>
+				<array>
+					<string>76.76.2.11</string>
+				</array>
+				<key>ServerName</key>
+				<string>p2.freedns.controld.com</string>
+			</dict>
+			<key>PayloadDisplayName</key>
+			<string>ControlD Free - Ad Blocking (DoT)</string>
+			<key>PayloadIdentifier</key>
+			<string>com.atikansari.dns.controld-ads-dot.settings</string>
+			<key>PayloadOrganization</key>
+			<string>Atik Ansari</string>
+			<key>PayloadType</key>
+			<string>com.apple.dnsSettings.managed</string>
+			<key>PayloadUUID</key>
+			<string>31C5E245-265D-54BA-A33D-766412F0807D</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Blocks advertising, tracking and malware domains. Operated by Windscribe under the ControlD brand. This is the free tier and needs no account.
+
+Blocks: Ads, trackers and malware.
+Transport: DNS-over-TLS.
+Provider: https://controld.com/free-dns</string>
+	<key>PayloadDisplayName</key>
+	<string>ControlD Free - Ad Blocking (DoT)</string>
+	<key>PayloadIdentifier</key>
+	<string>com.atikansari.dns.controld-ads-dot</string>
+	<key>PayloadOrganization</key>
+	<string>Atik Ansari</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>7E5DA7AA-16A3-5A91-B392-46A5D9698519</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

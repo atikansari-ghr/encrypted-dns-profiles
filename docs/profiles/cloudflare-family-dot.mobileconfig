@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>DNSSettings</key>
+			<dict>
+				<key>DNSProtocol</key>
+				<string>TLS</string>
+				<key>ServerAddresses</key>
+				<array>
+					<string>1.1.1.3</string>
+					<string>1.0.0.3</string>
+				</array>
+				<key>ServerName</key>
+				<string>family.cloudflare-dns.com</string>
+			</dict>
+			<key>PayloadDisplayName</key>
+			<string>Cloudflare - Family (DoT)</string>
+			<key>PayloadIdentifier</key>
+			<string>com.atikansari.dns.cloudflare-family-dot.settings</string>
+			<key>PayloadOrganization</key>
+			<string>Atik Ansari</string>
+			<key>PayloadType</key>
+			<string>com.apple.dnsSettings.managed</string>
+			<key>PayloadUUID</key>
+			<string>B1868953-2EA9-5656-8A1E-51317BFF46C1</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Blocks known malware and adult content. Operated by Cloudflare. This profile does NOT block advertising or trackers - choose an AdGuard or ControlD family profile if you want both.
+
+Blocks: Malware and adult content - does not block ads.
+Transport: DNS-over-TLS.
+Provider: https://one.one.one.one/family/</string>
+	<key>PayloadDisplayName</key>
+	<string>Cloudflare - Family (DoT)</string>
+	<key>PayloadIdentifier</key>
+	<string>com.atikansari.dns.cloudflare-family-dot</string>
+	<key>PayloadOrganization</key>
+	<string>Atik Ansari</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>9E9E91BF-8E18-59DA-BB51-490DF05BF455</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>
