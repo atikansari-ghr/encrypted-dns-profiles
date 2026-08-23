@@ -88,17 +88,17 @@ The same "Not Signed" warning described above applies here too, and for the same
 
 Every variant, in both DoH and DoT. Links point at the install site, which serves the correct content type for a one-tap install; downloading straight from GitHub's raw file view shows the XML instead.
 
-| Provider | Variant | DoH | DoT |
-|---|---|---|---|
-| AdGuard DNS - Ad Blocking | Default | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/adguard-default-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/adguard-default-dot.mobileconfig) |
-| AdGuard DNS - Family Protection | Family | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/adguard-family-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/adguard-family-dot.mobileconfig) |
-| Mullvad DNS - Adblock | Adblock | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/mullvad-adblock-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/mullvad-adblock-dot.mobileconfig) |
-| ControlD Free - Ad Blocking | Ad Blocking | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/controld-ads-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/controld-ads-dot.mobileconfig) |
-| ControlD Free - Family | Family | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/controld-family-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/controld-family-dot.mobileconfig) |
-| Cloudflare - Security | Security | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cloudflare-security-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cloudflare-security-dot.mobileconfig) |
-| Cloudflare - Family | Family | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cloudflare-family-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cloudflare-family-dot.mobileconfig) |
-| CleanBrowsing - Family Filter | Family | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cleanbrowsing-family-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cleanbrowsing-family-dot.mobileconfig) |
-| CleanBrowsing - Security Filter | Security | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cleanbrowsing-security-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cleanbrowsing-security-dot.mobileconfig) |
+| Profile | DoH | DoT |
+|---|---|---|
+| AdGuard DNS - Ad Blocking | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/adguard-default-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/adguard-default-dot.mobileconfig) |
+| AdGuard DNS - Family Protection | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/adguard-family-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/adguard-family-dot.mobileconfig) |
+| Mullvad DNS - Adblock | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/mullvad-adblock-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/mullvad-adblock-dot.mobileconfig) |
+| ControlD Free - Ad Blocking | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/controld-ads-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/controld-ads-dot.mobileconfig) |
+| ControlD Free - Family | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/controld-family-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/controld-family-dot.mobileconfig) |
+| Cloudflare - Security | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cloudflare-security-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cloudflare-security-dot.mobileconfig) |
+| Cloudflare - Family | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cloudflare-family-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cloudflare-family-dot.mobileconfig) |
+| CleanBrowsing - Family Filter | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cleanbrowsing-family-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cleanbrowsing-family-dot.mobileconfig) |
+| CleanBrowsing - Security Filter | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cleanbrowsing-security-doh.mobileconfig) | [Install](https://atikansari-ghr.github.io/encrypted-dns-profiles/profiles/cleanbrowsing-security-dot.mobileconfig) |
 
 ## Check it is working
 
