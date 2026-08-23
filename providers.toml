@@ -1,0 +1,114 @@
+# Provider catalogue - the single source of truth for every generated profile.
+# Add a provider by appending a [[profiles]] block and running:
+#   python scripts/generate_profiles.py
+#
+# Slugs are frozen once released: a slug change alters the derived payload UUID
+# and breaks replace-on-reinstall for anyone who already installed the profile.
+
+[[profiles]]
+slug = "adguard-default"
+provider = "AdGuard"
+variant = "Default"
+display_name = "AdGuard DNS - Ad Blocking"
+blocks = "Ads and trackers"
+description = "Blocks advertising and tracking domains across every app on the device. Operated by AdGuard Software Limited. The public resolver does not log queries."
+homepage = "https://adguard-dns.io/"
+doh_url = "https://dns.adguard-dns.com/dns-query"
+dot_hostname = "dns.adguard-dns.com"
+addresses = ["94.140.14.14", "94.140.15.15"]
+
+[[profiles]]
+slug = "adguard-family"
+provider = "AdGuard"
+variant = "Family Protection"
+display_name = "AdGuard DNS - Family Protection"
+blocks = "Ads, trackers, adult content, and enforces safe search"
+description = "Everything the ad-blocking profile blocks, plus adult content, and enforces safe search on major search engines. Operated by AdGuard Software Limited."
+homepage = "https://adguard-dns.io/"
+doh_url = "https://family.adguard-dns.com/dns-query"
+dot_hostname = "family.adguard-dns.com"
+addresses = ["94.140.14.15", "94.140.15.16"]
+
+[[profiles]]
+slug = "mullvad-adblock"
+provider = "Mullvad"
+variant = "Adblock"
+display_name = "Mullvad DNS - Adblock"
+blocks = "Ads and trackers"
+description = "Blocks advertising and tracking domains. Operated by Mullvad VPN AB in Sweden, with a published no-logging policy. Free to use without a Mullvad account."
+homepage = "https://mullvad.net/en/help/dns-over-https-and-dns-over-tls"
+doh_url = "https://adblock.dns.mullvad.net/dns-query"
+dot_hostname = "adblock.dns.mullvad.net"
+addresses = ["194.242.2.3"]
+
+[[profiles]]
+slug = "controld-ads"
+provider = "ControlD"
+variant = "Free - Ads"
+display_name = "ControlD Free - Ad Blocking"
+blocks = "Ads, trackers and malware"
+description = "Blocks advertising, tracking and malware domains. Operated by Windscribe under the ControlD brand. This is the free tier and needs no account."
+homepage = "https://controld.com/free-dns"
+doh_url = "https://freedns.controld.com/p2"
+dot_hostname = "p2.freedns.controld.com"
+addresses = ["76.76.2.11"]
+
+[[profiles]]
+slug = "controld-family"
+provider = "ControlD"
+variant = "Free - Family"
+display_name = "ControlD Free - Family"
+blocks = "Ads, trackers, malware and adult content"
+description = "Everything the ControlD ad-blocking profile blocks, plus adult content. Operated by Windscribe under the ControlD brand. Free tier, no account required."
+homepage = "https://controld.com/free-dns"
+doh_url = "https://freedns.controld.com/family"
+dot_hostname = "family.freedns.controld.com"
+addresses = ["76.76.2.11"]
+
+[[profiles]]
+slug = "cloudflare-security"
+provider = "Cloudflare"
+variant = "Security"
+display_name = "Cloudflare - Security"
+blocks = "Malware only - does not block ads"
+description = "Blocks known malware domains. Operated by Cloudflare. This profile does NOT block advertising or trackers - choose an AdGuard, Mullvad or ControlD profile for that."
+homepage = "https://one.one.one.one/family/"
+doh_url = "https://security.cloudflare-dns.com/dns-query"
+dot_hostname = "security.cloudflare-dns.com"
+addresses = ["1.1.1.2", "1.0.0.2"]
+
+[[profiles]]
+slug = "cloudflare-family"
+provider = "Cloudflare"
+variant = "Family"
+display_name = "Cloudflare - Family"
+blocks = "Malware and adult content - does not block ads"
+description = "Blocks known malware and adult content. Operated by Cloudflare. This profile does NOT block advertising or trackers - choose an AdGuard or ControlD family profile if you want both."
+homepage = "https://one.one.one.one/family/"
+doh_url = "https://family.cloudflare-dns.com/dns-query"
+dot_hostname = "family.cloudflare-dns.com"
+addresses = ["1.1.1.3", "1.0.0.3"]
+
+[[profiles]]
+slug = "cleanbrowsing-family"
+provider = "CleanBrowsing"
+variant = "Family Filter"
+display_name = "CleanBrowsing - Family Filter"
+blocks = "Adult content, and enforces safe search"
+description = "Blocks adult content and enforces safe search on major search engines. Operated by CleanBrowsing. Does not block advertising."
+homepage = "https://cleanbrowsing.org/filters/"
+doh_url = "https://doh.cleanbrowsing.org/doh/family-filter/"
+dot_hostname = "family-filter-dns.cleanbrowsing.org"
+addresses = ["185.228.168.168", "185.228.169.168"]
+
+[[profiles]]
+slug = "cleanbrowsing-security"
+provider = "CleanBrowsing"
+variant = "Security Filter"
+display_name = "CleanBrowsing - Security Filter"
+blocks = "Malware and phishing - does not block ads"
+description = "Blocks malware and phishing domains. Operated by CleanBrowsing. Does not block advertising or adult content."
+homepage = "https://cleanbrowsing.org/filters/"
+doh_url = "https://doh.cleanbrowsing.org/doh/security-filter/"
+dot_hostname = "security-filter-dns.cleanbrowsing.org"
+addresses = ["185.228.168.9", "185.228.169.9"]
