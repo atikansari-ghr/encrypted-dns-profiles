@@ -1,0 +1,56 @@
+<svg viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Helvetica, Arial, sans-serif">
+<title>iOS DNS profile selector showing four installed profiles with AdGuard DNS - Ad Blocking (DoH) checked</title>
+<desc>Illustrative mockup, not a real screenshot. Settings, General, VPN and Device Management, DNS: four installed profiles with the active one checked.</desc>
+<rect x="0" y="0" width="400" height="700" fill="#FAFAFB"/>
+
+<text x="200" y="26" font-size="13" fill="#6E6E73" text-anchor="middle">Settings &#8250; General &#8250; VPN &amp; Device Management &#8250; DNS</text>
+
+<defs>
+  <clipPath id="ios-dns-clip"><rect x="56" y="46" width="288" height="588" rx="30"/></clipPath>
+</defs>
+<rect x="50" y="40" width="300" height="600" rx="36" fill="#1C1C1E"/>
+<rect x="56" y="46" width="288" height="588" rx="30" fill="#F2F2F7"/>
+<g clip-path="url(#ios-dns-clip)">
+  <text x="72" y="70" font-size="13" font-weight="600" fill="#1C1C1E">9:41</text>
+  <rect x="280" y="56" width="4" height="13" fill="#1C1C1E"/>
+  <rect x="286" y="60" width="4" height="9" fill="#1C1C1E"/>
+  <rect x="292" y="58" width="4" height="11" fill="#1C1C1E"/>
+  <rect x="302" y="58" width="22" height="11" rx="2.5" fill="none" stroke="#1C1C1E" stroke-width="1"/>
+  <rect x="304" y="60" width="16" height="7" rx="1" fill="#1C1C1E"/>
+
+  <text x="76" y="130" font-size="13" fill="#007AFF">&#8249; Device Management</text>
+  <text x="72" y="160" font-size="26" font-weight="700" fill="#1C1C1E">DNS</text>
+  <text x="72" y="180" font-size="11" fill="#8E8E93">Four DNS profiles installed. Tap one to switch.</text>
+
+  <text x="72" y="204" font-size="11" font-weight="700" fill="#8E8E93">DNS SETTINGS</text>
+  <rect x="72" y="212" width="256" height="216" rx="10" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1"/>
+
+  <!-- Row 1: active, checked -->
+  <rect x="72" y="212" width="256" height="54" rx="10" fill="#EAF2FF"/>
+  <text x="86" y="235" font-size="12.5" font-weight="600" fill="#1C1C1E">AdGuard DNS - Ad Blocking</text>
+  <text x="86" y="250" font-size="12.5" font-weight="600" fill="#1C1C1E">(DoH)</text>
+  <path d="M 304 240 l 5 6 l 9 -12" fill="none" stroke="#007AFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="86" y1="266" x2="314" y2="266" stroke="#E5E5EA" stroke-width="1"/>
+
+  <!-- Row 2 -->
+  <text x="86" y="289" font-size="12.5" fill="#1C1C1E">AdGuard DNS - Family Protection</text>
+  <text x="86" y="304" font-size="12.5" fill="#1C1C1E">(DoT)</text>
+  <line x1="86" y1="320" x2="314" y2="320" stroke="#E5E5EA" stroke-width="1"/>
+
+  <!-- Row 3 -->
+  <text x="86" y="343" font-size="12.5" fill="#1C1C1E">Cloudflare - Security</text>
+  <line x1="86" y1="374" x2="314" y2="374" stroke="#E5E5EA" stroke-width="1"/>
+
+  <!-- Row 4 -->
+  <text x="86" y="397" font-size="12.5" fill="#1C1C1E">ControlD Free - Ad Blocking</text>
+
+  <text x="72" y="450" font-size="11" font-weight="700" fill="#8E8E93">ABOUT</text>
+  <rect x="72" y="458" width="256" height="92" rx="10" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1"/>
+  <text x="86" y="480" font-size="10.5" fill="#1C1C1E">Only one DNS profile is active at a</text>
+  <text x="86" y="494" font-size="10.5" fill="#1C1C1E">time. Selecting a profile here turns</text>
+  <text x="86" y="508" font-size="10.5" fill="#1C1C1E">off any other installed DNS profile,</text>
+  <text x="86" y="522" font-size="10.5" fill="#1C1C1E">so it is safe to install several.</text>
+</g>
+
+<text x="200" y="672" font-size="13" font-weight="600" fill="#3C3C43" text-anchor="middle">Install several profiles, then switch anytime from this screen</text>
+</svg>

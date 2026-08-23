@@ -1,0 +1,108 @@
+<svg viewBox="0 0 900 630" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Helvetica, Arial, sans-serif">
+<title>Comparison of what each encrypted DNS profile blocks: ads, trackers, malware and adult content</title>
+<desc>Illustrative graphic, not a screenshot. Nine provider profiles compared across four columns; the two Cloudflare rows are hollow in the Ads and Trackers columns because Cloudflare blocks malware only.</desc>
+<rect x="0" y="0" width="900" height="630" fill="#FFFFFF"/>
+
+<text x="24" y="36" font-size="18" font-weight="700" fill="#1C1C1E">What each profile blocks</text>
+<text x="24" y="56" font-size="12" fill="#5F6368"><tspan fill="#2E5AAC">&#9679;</tspan> Blocks<tspan dx="14" fill="#B0B4BA">&#9675;</tspan> Does not block</text>
+
+<!-- header -->
+<text x="32" y="108" font-size="11.5" font-weight="700" fill="#6E6E73">PROFILE</text>
+<text x="400" y="108" font-size="11.5" font-weight="700" fill="#6E6E73" text-anchor="middle">ADS</text>
+<text x="536" y="108" font-size="11.5" font-weight="700" fill="#6E6E73" text-anchor="middle">TRACKERS</text>
+<text x="672" y="108" font-size="11.5" font-weight="700" fill="#6E6E73" text-anchor="middle">MALWARE</text>
+<text x="808" y="108" font-size="11.5" font-weight="700" fill="#6E6E73" text-anchor="middle">ADULT</text>
+<line x1="24" y1="118" x2="876" y2="118" stroke="#1C1C1E" stroke-width="1.5"/>
+
+<!-- row backgrounds -->
+<rect x="24" y="118" width="852" height="46" fill="#FAFAFA"/>
+<rect x="24" y="164" width="852" height="46" fill="#FFFFFF"/>
+<rect x="24" y="210" width="852" height="46" fill="#FAFAFA"/>
+<rect x="24" y="256" width="852" height="46" fill="#FFFFFF"/>
+<rect x="24" y="302" width="852" height="46" fill="#FAFAFA"/>
+<rect x="24" y="348" width="852" height="46" fill="#FFFFFF"/>
+<rect x="24" y="394" width="852" height="46" fill="#FAFAFA"/>
+<rect x="24" y="440" width="852" height="46" fill="#FFFFFF"/>
+<rect x="24" y="486" width="852" height="46" fill="#FAFAFA"/>
+<line x1="24" y1="532" x2="876" y2="532" stroke="#E5E5EA" stroke-width="1"/>
+
+<!-- accent bar flagging the two Cloudflare rows -->
+<rect x="24" y="348" width="4" height="92" fill="#2E5AAC"/>
+
+<!-- Row 0: AdGuard DNS - Ad Blocking -->
+<text x="32" y="138" font-size="13" font-weight="600" fill="#1C1C1E">AdGuard DNS</text>
+<text x="32" y="154" font-size="11" fill="#6E6E73">Ad Blocking</text>
+<circle cx="400" cy="141" r="8" fill="#2E5AAC"/>
+<circle cx="536" cy="141" r="8" fill="#2E5AAC"/>
+<circle cx="672" cy="141" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+<circle cx="808" cy="141" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+
+<!-- Row 1: AdGuard DNS - Family Protection -->
+<text x="32" y="184" font-size="13" font-weight="600" fill="#1C1C1E">AdGuard DNS</text>
+<text x="32" y="200" font-size="11" fill="#6E6E73">Family Protection</text>
+<circle cx="400" cy="187" r="8" fill="#2E5AAC"/>
+<circle cx="536" cy="187" r="8" fill="#2E5AAC"/>
+<circle cx="672" cy="187" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+<circle cx="808" cy="187" r="8" fill="#2E5AAC"/>
+
+<!-- Row 2: Mullvad DNS - Adblock -->
+<text x="32" y="230" font-size="13" font-weight="600" fill="#1C1C1E">Mullvad DNS</text>
+<text x="32" y="246" font-size="11" fill="#6E6E73">Adblock</text>
+<circle cx="400" cy="233" r="8" fill="#2E5AAC"/>
+<circle cx="536" cy="233" r="8" fill="#2E5AAC"/>
+<circle cx="672" cy="233" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+<circle cx="808" cy="233" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+
+<!-- Row 3: ControlD Free - Ad Blocking -->
+<text x="32" y="276" font-size="13" font-weight="600" fill="#1C1C1E">ControlD Free</text>
+<text x="32" y="292" font-size="11" fill="#6E6E73">Ad Blocking</text>
+<circle cx="400" cy="279" r="8" fill="#2E5AAC"/>
+<circle cx="536" cy="279" r="8" fill="#2E5AAC"/>
+<circle cx="672" cy="279" r="8" fill="#2E5AAC"/>
+<circle cx="808" cy="279" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+
+<!-- Row 4: ControlD Free - Family -->
+<text x="32" y="322" font-size="13" font-weight="600" fill="#1C1C1E">ControlD Free</text>
+<text x="32" y="338" font-size="11" fill="#6E6E73">Family</text>
+<circle cx="400" cy="325" r="8" fill="#2E5AAC"/>
+<circle cx="536" cy="325" r="8" fill="#2E5AAC"/>
+<circle cx="672" cy="325" r="8" fill="#2E5AAC"/>
+<circle cx="808" cy="325" r="8" fill="#2E5AAC"/>
+
+<!-- Row 5: Cloudflare - Security -->
+<text x="32" y="368" font-size="13" font-weight="600" fill="#1C1C1E">Cloudflare</text>
+<text x="32" y="384" font-size="11" fill="#6E6E73">Security</text>
+<circle cx="400" cy="371" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+<circle cx="536" cy="371" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+<circle cx="672" cy="371" r="8" fill="#2E5AAC"/>
+<circle cx="808" cy="371" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+
+<!-- Row 6: Cloudflare - Family -->
+<text x="32" y="414" font-size="13" font-weight="600" fill="#1C1C1E">Cloudflare</text>
+<text x="32" y="430" font-size="11" fill="#6E6E73">Family</text>
+<circle cx="400" cy="417" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+<circle cx="536" cy="417" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+<circle cx="672" cy="417" r="8" fill="#2E5AAC"/>
+<circle cx="808" cy="417" r="8" fill="#2E5AAC"/>
+
+<!-- Row 7: CleanBrowsing - Family Filter -->
+<text x="32" y="460" font-size="13" font-weight="600" fill="#1C1C1E">CleanBrowsing</text>
+<text x="32" y="476" font-size="11" fill="#6E6E73">Family Filter</text>
+<circle cx="400" cy="463" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+<circle cx="536" cy="463" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+<circle cx="672" cy="463" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+<circle cx="808" cy="463" r="8" fill="#2E5AAC"/>
+
+<!-- Row 8: CleanBrowsing - Security Filter -->
+<text x="32" y="506" font-size="13" font-weight="600" fill="#1C1C1E">CleanBrowsing</text>
+<text x="32" y="522" font-size="11" fill="#6E6E73">Security Filter</text>
+<circle cx="400" cy="509" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+<circle cx="536" cy="509" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+<circle cx="672" cy="509" r="8" fill="#2E5AAC"/>
+<circle cx="808" cy="509" r="8" fill="none" stroke="#B0B4BA" stroke-width="2"/>
+
+<!-- callout -->
+<rect x="24" y="546" width="852" height="60" rx="10" fill="#EFF4FF" stroke="#D3E2FF" stroke-width="1"/>
+<text x="44" y="572" font-size="13" font-weight="700" fill="#1C1C1E">Cloudflare's two profiles block malware only.</text>
+<text x="44" y="590" font-size="12" fill="#3C3C43">They do not block ads or trackers &#8212; choose AdGuard, Mullvad or ControlD for that.</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg" font-family="Roboto, Helvetica, Arial, sans-serif">
+<title>Android Private DNS dialog with dns.adguard-dns.com entered as the provider hostname</title>
+<desc>Illustrative mockup, not a real screenshot. Settings, Network &amp; internet, Private DNS: the provider hostname option selected with dns.adguard-dns.com typed in.</desc>
+<rect x="0" y="0" width="400" height="700" fill="#FAFAFB"/>
+
+<text x="200" y="26" font-size="13" fill="#5F6368" text-anchor="middle">Settings &#8250; Network &amp; internet &#8250; Private DNS</text>
+
+<defs>
+  <clipPath id="android-dns-clip"><rect x="56" y="46" width="288" height="588" rx="18"/></clipPath>
+</defs>
+<rect x="50" y="40" width="300" height="600" rx="24" fill="#202124"/>
+<rect x="56" y="46" width="288" height="588" rx="18" fill="#FFFFFF"/>
+<g clip-path="url(#android-dns-clip)">
+  <!-- status bar -->
+  <text x="72" y="70" font-size="12" font-weight="500" fill="#202124">9:41</text>
+  <circle cx="286" cy="64" r="2.4" fill="#202124"/>
+  <circle cx="294" cy="64" r="2.4" fill="#202124"/>
+  <circle cx="302" cy="64" r="2.4" fill="#202124"/>
+  <rect x="310" y="59" width="18" height="10" rx="2" fill="none" stroke="#202124" stroke-width="1"/>
+  <rect x="312" y="61" width="12" height="6" rx="1" fill="#202124"/>
+
+  <!-- underlying settings screen, dimmed by the dialog scrim -->
+  <text x="76" y="106" font-size="18" fill="#202124">&#8592;</text>
+  <text x="100" y="106" font-size="15" font-weight="500" fill="#202124">Private DNS</text>
+  <text x="76" y="128" font-size="11" fill="#5F6368">Automatic</text>
+
+  <!-- scrim -->
+  <rect x="56" y="46" width="288" height="588" fill="#000000" fill-opacity="0.45"/>
+
+  <!-- dialog card -->
+  <rect x="72" y="168" width="256" height="352" rx="12" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1"/>
+
+  <text x="96" y="202" font-size="16" font-weight="700" fill="#202124">Private DNS</text>
+  <text x="96" y="224" font-size="11" fill="#5F6368">Specify a DNS provider that</text>
+  <text x="96" y="238" font-size="11" fill="#5F6368">supports DNS-over-TLS (DoT).</text>
+
+  <!-- option: Off -->
+  <circle cx="104" cy="266" r="8" fill="none" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="122" y="271" font-size="13" fill="#202124">Off</text>
+
+  <!-- option: Automatic -->
+  <circle cx="104" cy="300" r="8" fill="none" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="122" y="305" font-size="13" fill="#202124">Automatic</text>
+
+  <!-- option: Private DNS provider hostname (selected) -->
+  <circle cx="104" cy="334" r="8" fill="none" stroke="#018786" stroke-width="1.5"/>
+  <circle cx="104" cy="334" r="4" fill="#018786"/>
+  <text x="122" y="330" font-size="13" font-weight="500" fill="#202124">Private DNS provider</text>
+  <text x="122" y="345" font-size="13" font-weight="500" fill="#202124">hostname</text>
+
+  <!-- hostname input, focused -->
+  <rect x="104" y="364" width="200" height="36" rx="4" fill="#FFFFFF" stroke="#018786" stroke-width="1.6"/>
+  <text x="114" y="387" font-size="12.5" fill="#202124">dns.adguard-dns.com</text>
+  <text x="104" y="412" font-size="9.5" fill="#5F6368">e.g. dns.adguard-dns.com</text>
+
+  <!-- buttons -->
+  <text x="252" y="500" font-size="12.5" font-weight="600" fill="#5F6368" text-anchor="end" letter-spacing="0.5">CANCEL</text>
+  <text x="312" y="500" font-size="12.5" font-weight="700" fill="#018786" text-anchor="end" letter-spacing="0.5">SAVE</text>
+</g>
+
+<text x="200" y="672" font-size="13" font-weight="600" fill="#3C3C43" text-anchor="middle">Android: Private DNS provider hostname, then Save</text>
+</svg>
