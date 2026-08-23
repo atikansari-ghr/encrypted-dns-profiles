@@ -17,7 +17,7 @@ jobs:
           python-version: '3.13'
 
       - name: Install test dependencies
-        run: python -m pip install --upgrade pip pytest
+        run: python -m pip install --upgrade pip pytest segno
 
       - name: Run unit tests
         run: python -m pytest -v
@@ -25,11 +25,14 @@ jobs:
       - name: Regenerate profiles
         run: python scripts/generate_profiles.py
 
-      - name: Fail if the committed profiles drifted from the catalogue
+      - name: Regenerate QR codes
+        run: python scripts/make_qr.py
+
+      - name: Fail if the committed profiles or QR codes drifted from the catalogue
         run: |
-          if [ -n "$(git status --porcelain -- docs/profiles)" ]; then
-            echo "::error::docs/profiles is out of date. Run: python scripts/generate_profiles.py"
-            git status --porcelain -- docs/profiles
+          if [ -n "$(git status --porcelain -- docs/profiles docs/qr)" ]; then
+            echo "::error::docs/profiles or docs/qr is out of date. Run: python scripts/generate_profiles.py && python scripts/make_qr.py"
+            git status --porcelain -- docs/profiles docs/qr
             exit 1
           fi
 

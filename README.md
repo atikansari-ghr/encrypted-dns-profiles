@@ -23,17 +23,17 @@ Install site: **[atikansari-ghr.github.io/encrypted-dns-profiles](https://atikan
 
 A DNS-level blocklist is not an ad blocker in the browser-extension sense — it stops ad and tracking *domains* from resolving, which removes most ads and all tracking pixels served from those domains, but not everything a browser extension would catch. Read the table before you pick a profile: the two Cloudflare profiles are here for their reliability and low latency, not for ad blocking.
 
-| Profile | Blocks | DoT hostname |
-|---|---|---|
-| AdGuard DNS - Ad Blocking | Ads, trackers | `dns.adguard-dns.com` |
-| AdGuard DNS - Family Protection | Ads, trackers, adult content, enforces safe search | `family.adguard-dns.com` |
-| Mullvad DNS - Adblock | Ads, trackers, no query logging | `adblock.dns.mullvad.net` |
-| ControlD Free - Ad Blocking | Ads, trackers, malware | `p2.freedns.controld.com` |
-| ControlD Free - Family | Ads, trackers, malware, adult content | `family.freedns.controld.com` |
-| Cloudflare - Security | Malware only — **does not block ads** | `security.cloudflare-dns.com` |
-| Cloudflare - Family | Malware and adult content — **does not block ads** | `family.cloudflare-dns.com` |
-| CleanBrowsing - Family Filter | Adult content, enforces safe search | `family-filter-dns.cleanbrowsing.org` |
-| CleanBrowsing - Security Filter | Malware, phishing | `security-filter-dns.cleanbrowsing.org` |
+| Profile | Blocks | Operator | DoT hostname |
+|---|---|---|---|
+| AdGuard DNS - Ad Blocking | Ads, trackers | AdGuard Software Limited | `dns.adguard-dns.com` |
+| AdGuard DNS - Family Protection | Ads, trackers, adult content, enforces safe search | AdGuard Software Limited | `family.adguard-dns.com` |
+| Mullvad DNS - Adblock | Ads, trackers, no query logging | Mullvad VPN AB (Sweden) | `adblock.dns.mullvad.net` |
+| ControlD Free - Ad Blocking | Ads, trackers, malware | Windscribe (ControlD brand) | `p2.freedns.controld.com` |
+| ControlD Free - Family | Ads, trackers, malware, adult content | Windscribe (ControlD brand) | `family.freedns.controld.com` |
+| Cloudflare - Security | Malware only — **does not block ads** | Cloudflare | `security.cloudflare-dns.com` |
+| Cloudflare - Family | Malware and adult content — **does not block ads** | Cloudflare | `family.cloudflare-dns.com` |
+| CleanBrowsing - Family Filter | Adult content, enforces safe search — **does not block ads** | CleanBrowsing | `family-filter-dns.cleanbrowsing.org` |
+| CleanBrowsing - Security Filter | Malware, phishing — **does not block ads** | CleanBrowsing | `security-filter-dns.cleanbrowsing.org` |
 
 ## Install on iPhone or iPad
 
@@ -142,6 +142,7 @@ python -m pytest
 - Each profile includes bootstrap IP addresses for its resolver, so it does not depend on the network's existing DNS to reach the encrypted resolver in the first place.
 - The install site makes no external requests — no CDN, no web fonts, no analytics, no third-party script of any kind. Everything is inline and local.
 - No telemetry, anywhere in this repository or the install site.
+- The weekly endpoint check (the `endpoints` badge above) runs on a GitHub Actions schedule, and GitHub automatically disables scheduled workflows after 60 days with no repository activity. If the repository goes quiet, the check stops running silently until someone triggers it manually (`workflow_dispatch`) or pushes a commit — it is not a standing guarantee.
 
 ## Support
 

@@ -122,8 +122,10 @@ encrypted-dns-profiles/
 │   ├── profiles/*.mobileconfig      # 18 generated, committed
 │   ├── qr/*.svg
 │   ├── screenshots/*.svg
-│   ├── social-preview.png
-│   └── superpowers/specs/           # design docs
+│   └── social-preview.png
+├── design/
+│   ├── plans/                       # implementation plans
+│   └── specs/                       # design docs
 ├── .github/workflows/validate.yml
 ├── .github/workflows/pages.yml
 ├── .github/FUNDING.yml
@@ -137,12 +139,12 @@ Pages serves from `docs/`, so this yields one canonical path that is
 simultaneously the install URL and the GitHub-browsable source. There is no copy
 step and therefore no opportunity for the served file to drift from the reviewed file.
 
-A consequence of that choice: because Pages publishes everything under `docs/`,
-`docs/superpowers/specs/` is served publicly too. This is accepted rather than
-worked around — the repository is public, the design document is not sensitive,
-and suppressing it would mean adding Jekyll configuration whose only purpose is
-hiding a file that is already readable on GitHub. Nothing links to it from
-`index.html`.
+Planning documents — this spec and the implementation plan — live under
+`design/` at the repository root, outside `docs/`, so Pages never publishes
+them. That is a deliberate separation between the published install site and
+internal project history, not an attempt at secrecy: the repository is public
+either way, and nothing about `design/` needs hiding — it simply has no reason
+to be served as part of the site.
 
 ### 4.1 Generated filenames
 

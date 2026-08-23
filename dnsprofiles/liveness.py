@@ -39,7 +39,8 @@ def probe_doh(url: str, timeout: float = 10.0) -> tuple[bool, str]:
             if not (body[2] & 0x80):
                 return False, "HTTP 200 but response is a query, not a response (QR bit not set)"
             content_type = response.headers.get("Content-Type")
-            if content_type and content_type != "application/dns-message":
+            media_type = content_type.split(";", 1)[0].strip() if content_type else content_type
+            if media_type and media_type != "application/dns-message":
                 return False, f"HTTP 200 but Content-Type is {content_type}, not application/dns-message"
             return True, f"HTTP 200, {len(body)} bytes"
     except urllib.error.HTTPError as exc:

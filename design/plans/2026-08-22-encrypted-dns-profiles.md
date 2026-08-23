@@ -8,7 +8,7 @@
 
 **Tech Stack:** Python 3.11+ (stdlib `tomllib`, `plistlib`, `uuid`, `ipaddress`), pytest, `segno` for QR generation (build-time only), hand-written HTML/CSS/SVG, GitHub Actions, bash.
 
-**Spec:** `docs/superpowers/specs/2026-08-22-encrypted-dns-profiles-design.md`
+**Spec:** `design/specs/2026-08-22-encrypted-dns-profiles-design.md`
 
 ## Global Constraints
 

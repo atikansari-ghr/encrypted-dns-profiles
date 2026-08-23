@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Encrypted DNS Profiles — install an encrypted resolver</title>
-<meta name="description" content="Installable configuration profiles that switch your device to an encrypted, ad-blocking DNS resolver. No app, no VPN, no account.">
+<meta name="description" content="Installable encrypted DNS configuration profiles, headlined by AdGuard's ad-blocking and family-protection resolvers. No app, no VPN, no account.">
 <style>
   :root {
     color-scheme: light dark;
@@ -333,7 +333,7 @@
 
 <header>
   <h1>Encrypted DNS Profiles</h1>
-  <p>Installable configuration profiles that switch your iPhone, iPad, Mac, or Android device to an encrypted, ad-blocking DNS resolver &mdash; no app, no VPN, no account.</p>
+  <p>Installable configuration profiles that switch your iPhone, iPad, Mac, or Android device to an encrypted DNS resolver, headlined by AdGuard's ad-blocking and family-protection resolvers &mdash; no app, no VPN, no account.</p>
   <a class="repo-link" href="https://github.com/atikansari-ghr/encrypted-dns-profiles">Source on GitHub</a>
 </header>
 
@@ -348,7 +348,9 @@
 
 <section id="choose-a-profile">
   <h2>Choose a profile</h2>
-  <p>Each card links to two versions of the same profile: <strong>DoH</strong> (DNS-over-HTTPS, recommended, works everywhere including iOS/iPadOS/macOS) and <strong>DoT</strong> (DNS-over-TLS, needed for Android's built-in Private DNS setting). Install only one profile at a time per device.</p>
+  <p>Each card links to two versions of the same profile: <strong>DoH</strong> (DNS-over-HTTPS, recommended, works everywhere including iOS/iPadOS/macOS) and <strong>DoT</strong> (DNS-over-TLS, needed for Android's built-in Private DNS setting). You can install more than one profile &mdash; only one is active at a time, and you choose which under Settings.</p>
+
+  <p><em>The screen images on this page are illustrative mockups, not real screenshots.</em></p>
 
   <figure>
     <img src="screenshots/provider-comparison.svg" alt="Comparison table of what each of the nine profiles blocks: ads, trackers, malware and adult content. The two Cloudflare rows are empty in the ads and trackers columns." loading="lazy">
@@ -536,18 +538,18 @@
 <section id="install-ios">
   <h2>Install on iPhone or iPad</h2>
   <ol>
-    <li>On your device, tap the <strong>Install (DoH)</strong> button on the profile card above. (DoT also works on iOS if you prefer it; DoH is recommended because it plays more predictably with captive portals.)</li>
+    <li>On your device, tap the <strong>Install (DoH)</strong> button on the profile card above. (DoT also works on iOS if you prefer it; DoH is recommended because it runs on port 443 alongside ordinary HTTPS traffic, whereas DoT's port 853 is trivially blocked by some networks.)</li>
     <li>Safari will open Settings and show <strong>Profile Downloaded</strong>. Tap it.</li>
     <li>Tap <strong>Install</strong> in the top-right corner, enter your device passcode if asked, then tap <strong>Install</strong> again on the two confirmation screens.</li>
   </ol>
   <figure>
-    <img src="screenshots/ios-install.svg" alt="Screenshot of the iOS profile install screen" loading="lazy">
+    <img src="screenshots/ios-install.svg" alt="Illustrative mockup of the iOS profile install screen" loading="lazy">
   </figure>
   <div class="callout">
     <strong>You will see a red "Not Signed" warning &mdash; this is expected.</strong>
     <p>These profiles are not cryptographically signed by a paid Apple developer certificate, so iOS marks them "Not Signed" in red. This does not mean the profile is unsafe or broken; it means Apple cannot vouch for who published it. You can always inspect exactly what a profile changes (only DNS settings) before installing by tapping "More Details" on the install screen.</p>
   </div>
-  <p>To switch to a different profile later, or to see which one is active, go to <strong>Settings &rarr; General &rarr; VPN &amp; Device Management</strong>. Remove the old profile there before installing a new one.</p>
+  <p>You can install more than one profile; iOS keeps them all and lets you pick which one is active under <strong>Settings &rarr; General &rarr; VPN &amp; Device Management</strong>.</p>
   <figure>
     <img src="screenshots/ios-dns-selector.svg" alt="Illustrative mockup of the iOS DNS profile selector under Settings, General, VPN and Device Management, showing four installed profiles with one checked as active" loading="lazy">
     <figcaption>Settings &rarr; General &rarr; VPN &amp; Device Management is also where you switch between profiles you've installed.</figcaption>
@@ -575,7 +577,7 @@
     </ol>
   </div>
   <figure>
-    <img src="screenshots/android-private-dns.svg" alt="Screenshot of the Android Private DNS setting" loading="lazy">
+    <img src="screenshots/android-private-dns.svg" alt="Illustrative mockup of the Android Private DNS setting" loading="lazy">
   </figure>
 </section>
 
@@ -615,6 +617,12 @@
 
     <dt>What happens on a network that blocks DNS-over-HTTPS?</dt>
     <dd>Some corporate, school, or hotel networks block encrypted DNS to keep their own filtering in place. If DoH stops working, try the DoT version of the same profile; if both are blocked, the device typically falls back to the network's own DNS, or you can temporarily remove the profile.</dd>
+
+    <dt>Does a VPN interfere with the DNS profile?</dt>
+    <dd>Yes. Most VPN apps take over DNS resolution while connected, which suppresses the encrypted DNS profile regardless of which one is active. This is expected &mdash; a VPN and a DNS profile both want to control DNS, and the VPN wins. Disconnect the VPN to use the profile, or check whether your VPN provider offers equivalent DNS filtering.</dd>
+
+    <dt>Safari shows raw XML instead of offering to install the profile. What do I do?</dt>
+    <dd>Use Safari's Share sheet to save the file (<strong>Share &rarr; Save to Files</strong>), then open it from the <strong>Files</strong> app to continue the install.</dd>
   </dl>
 </section>
 

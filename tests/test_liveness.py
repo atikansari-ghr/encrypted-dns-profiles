@@ -174,6 +174,20 @@ def test_probe_doh_rejects_wrong_content_type():
         assert "application/json" in detail
 
 
+def test_probe_doh_accepts_content_type_with_charset_parameter():
+    """probe_doh should accept a Content-Type carrying a charset parameter."""
+    valid_dns = b"\x00\x00\x84\x00\x00\x01\x00\x01\x00\x00\x00\x00" + b"X" * 53
+
+    mock_response = mock.Mock()
+    mock_response.status = 200
+    mock_response.headers = {"Content-Type": "application/dns-message; charset=utf-8"}
+    mock_response.read.return_value = valid_dns
+
+    with mock.patch("urllib.request.urlopen", return_value=mock.MagicMock(__enter__=mock.Mock(return_value=mock_response), __exit__=mock.Mock(return_value=None))):
+        ok, detail = probe_doh("https://example.com/dns-query")
+        assert ok is True
+
+
 def test_probe_doh_accepts_missing_content_type():
     """probe_doh should accept a response with no Content-Type header."""
     valid_dns = b"\x00\x00\x84\x00\x00\x01\x00\x01\x00\x00\x00\x00" + b"X" * 53
