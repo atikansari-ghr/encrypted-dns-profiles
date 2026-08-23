@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encrypted DNS Profiles — install an encrypted resolver</title>
+<meta name="description" content="Installable configuration profiles that switch your device to an encrypted, ad-blocking DNS resolver. No app, no VPN, no account.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f7f7f5;
+    --bg-raised: #ffffff;
+    --text: #1b1c1e;
+    --text-muted: #55585e;
+    --border: #dcdde0;
+    --accent: #1257c4;
+    --accent-text: #ffffff;
+    --accent-soft: #e8f0fe;
+    --warn-bg: #fdecec;
+    --warn-border: #d8514a;
+    --warn-text: #7a231e;
+    --note-bg: #fff6e0;
+    --note-border: #c99a1a;
+    --note-text: #5c4405;
+    --code-bg: #eceef1;
+    --focus: #1257c4;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16171a;
+      --bg-raised: #212226;
+      --text: #eceef1;
+      --text-muted: #b0b3b9;
+      --border: #34363c;
+      --accent: #6fa2ff;
+      --accent-text: #0b1220;
+      --accent-soft: #1c2a44;
+      --warn-bg: #3a1a19;
+      --warn-border: #d8514a;
+      --warn-text: #ffb4ae;
+      --note-bg: #3a2f0f;
+      --note-border: #c99a1a;
+      --note-text: #f2d27a;
+      --code-bg: #2a2c31;
+      --focus: #6fa2ff;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  a { color: var(--accent); }
+
+  main, header, footer {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 1.25rem 1rem;
+  }
+
+  header {
+    border-bottom: 1px solid var(--border);
+  }
+
+  header h1 {
+    margin: 0 0 0.25rem;
+    font-size: 1.5rem;
+  }
+
+  header p {
+    margin: 0 0 0.5rem;
+    color: var(--text-muted);
+  }
+
+  header a.repo-link {
+    display: inline-block;
+    font-size: 0.9rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin: 2.5rem 0 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  section:first-of-type h2 {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+    margin: 0 0 0.25rem;
+  }
+
+  p { margin: 0.5rem 0; }
+
+  code {
+    background: var(--code-bg);
+    border-radius: 4px;
+    padding: 0.1rem 0.35rem;
+    font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.9em;
+    word-break: break-all;
+  }
+
+  ol, ul {
+    padding-left: 1.3rem;
+  }
+
+  li {
+    margin: 0.35rem 0;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  @media (min-width: 620px) {
+    .card-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .card {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .card .provider {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .card h3 {
+    margin-top: 0;
+  }
+
+  .card .blocks {
+    font-weight: 600;
+  }
+
+  .card .operator {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .no-ad-block {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    color: var(--warn-text);
+    border-radius: 6px;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0.25rem 0;
+  }
+
+  .install-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.25rem 0;
+  }
+
+  .btn {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .btn:focus-visible, button:focus-visible, a:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-text);
+    flex: 1 1 auto;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--accent);
+    border-color: var(--accent);
+    flex: 1 1 auto;
+  }
+
+  .dot-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    background: var(--code-bg);
+    border-radius: 6px;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .dot-row code {
+    background: transparent;
+    padding: 0;
+    flex: 1 1 auto;
+  }
+
+  .copy-btn {
+    background: var(--bg-raised);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    flex: 0 0 auto;
+  }
+
+  .qr {
+    align-self: center;
+    margin-top: 0.25rem;
+  }
+
+  .qr img {
+    width: 140px;
+    height: 140px;
+    max-width: 100%;
+    background: #fff;
+    border-radius: 6px;
+    padding: 6px;
+  }
+
+  .qr figcaption {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+
+  .callout {
+    border: 1px solid var(--warn-border);
+    background: var(--warn-bg);
+    color: var(--warn-text);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin: 0.75rem 0;
+  }
+
+  .callout strong {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .note {
+    border: 1px solid var(--note-border);
+    background: var(--note-bg);
+    color: var(--note-text);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin: 0.75rem 0;
+  }
+
+  figure {
+    margin: 0.75rem 0;
+  }
+
+  figure img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .platform-block {
+    margin-bottom: 1.5rem;
+  }
+
+  .platform-block h3 {
+    margin-top: 1rem;
+  }
+
+  dl {
+    margin: 0.5rem 0;
+  }
+
+  dt {
+    font-weight: 600;
+    margin-top: 0.75rem;
+  }
+
+  dd {
+    margin: 0.25rem 0 0;
+    color: var(--text-muted);
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 2rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Encrypted DNS Profiles</h1>
+  <p>Installable configuration profiles that switch your iPhone, iPad, Mac, or Android device to an encrypted, ad-blocking DNS resolver &mdash; no app, no VPN, no account.</p>
+  <a class="repo-link" href="https://github.com/atikansari-ghr/encrypted-dns-profiles">Source on GitHub</a>
+</header>
+
+<main>
+
+<section id="what-this-does">
+  <h2>What this does</h2>
+  <p>A DNS profile changes which server your device asks to translate domain names (like <code>example.com</code>) into addresses. Installing one of the profiles below tells your device to send those lookups, encrypted, to a resolver that also filters out ad and tracking domains before they ever load.</p>
+  <p><strong>This is not a VPN.</strong> Your traffic still goes directly to the sites you visit &mdash; only the DNS lookup is redirected and encrypted. There is no separate app, no server relaying your browsing, and nothing to sign in to.</p>
+  <p>Once installed, the profile applies system-wide: every app on the device uses the new resolver, not just your browser.</p>
+</section>
+
+<section id="choose-a-profile">
+  <h2>Choose a profile</h2>
+  <p>Each card links to two versions of the same profile: <strong>DoH</strong> (DNS-over-HTTPS, recommended, works everywhere including iOS/iPadOS/macOS) and <strong>DoT</strong> (DNS-over-TLS, needed for Android's built-in Private DNS setting). Install only one profile at a time per device.</p>
+
+  <figure>
+    <img src="screenshots/provider-comparison.svg" alt="Comparison table of what each of the nine profiles blocks: ads, trackers, malware and adult content. The two Cloudflare rows are empty in the ads and trackers columns." loading="lazy">
+    <figcaption>What each profile blocks, at a glance. Note the two Cloudflare rows do not cover ads or trackers.</figcaption>
+  </figure>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <p class="provider">AdGuard</p>
+      <h3>AdGuard DNS &mdash; Ad Blocking</h3>
+      <p class="blocks">Blocks: Ads and trackers</p>
+      <p class="operator">Operated by AdGuard Software Limited. Homepage: <code>adguard-dns.io</code></p>
+      <div class="install-buttons">
+        <a class="btn btn-primary" href="profiles/adguard-default-doh.mobileconfig">Install (DoH)</a>
+        <a class="btn btn-secondary" href="profiles/adguard-default-dot.mobileconfig">Install (DoT)</a>
+      </div>
+      <div class="dot-row">
+        <code>dns.adguard-dns.com</code>
+        <button class="copy-btn" type="button" data-copy="dns.adguard-dns.com">Copy</button>
+      </div>
+      <figure class="qr">
+        <img src="qr/adguard-default-doh.svg" alt="QR code linking to the AdGuard DNS Ad Blocking DoH profile" width="140" height="140" loading="lazy">
+        <figcaption>Scan to install (DoH)</figcaption>
+      </figure>
+    </article>
+
+    <article class="card">
+      <p class="provider">AdGuard</p>
+      <h3>AdGuard DNS &mdash; Family Protection</h3>
+      <p class="blocks">Blocks: Ads, trackers, adult content, and enforces safe search</p>
+      <p class="operator">Operated by AdGuard Software Limited. Homepage: <code>adguard-dns.io</code></p>
+      <div class="install-buttons">
+        <a class="btn btn-primary" href="profiles/adguard-family-doh.mobileconfig">Install (DoH)</a>
+        <a class="btn btn-secondary" href="profiles/adguard-family-dot.mobileconfig">Install (DoT)</a>
+      </div>
+      <div class="dot-row">
+        <code>family.adguard-dns.com</code>
+        <button class="copy-btn" type="button" data-copy="family.adguard-dns.com">Copy</button>
+      </div>
+      <figure class="qr">
+        <img src="qr/adguard-family-doh.svg" alt="QR code linking to the AdGuard DNS Family Protection DoH profile" width="140" height="140" loading="lazy">
+        <figcaption>Scan to install (DoH)</figcaption>
+      </figure>
+    </article>
+
+    <article class="card">
+      <p class="provider">Mullvad</p>
+      <h3>Mullvad DNS &mdash; Adblock</h3>
+      <p class="blocks">Blocks: Ads and trackers</p>
+      <p class="operator">Operated by Mullvad VPN AB (Sweden), published no-logging policy. No Mullvad account needed. Homepage: <code>mullvad.net</code></p>
+      <div class="install-buttons">
+        <a class="btn btn-primary" href="profiles/mullvad-adblock-doh.mobileconfig">Install (DoH)</a>
+        <a class="btn btn-secondary" href="profiles/mullvad-adblock-dot.mobileconfig">Install (DoT)</a>
+      </div>
+      <div class="dot-row">
+        <code>adblock.dns.mullvad.net</code>
+        <button class="copy-btn" type="button" data-copy="adblock.dns.mullvad.net">Copy</button>
+      </div>
+      <figure class="qr">
+        <img src="qr/mullvad-adblock-doh.svg" alt="QR code linking to the Mullvad DNS Adblock DoH profile" width="140" height="140" loading="lazy">
+        <figcaption>Scan to install (DoH)</figcaption>
+      </figure>
+    </article>
+
+    <article class="card">
+      <p class="provider">ControlD</p>
+      <h3>ControlD Free &mdash; Ad Blocking</h3>
+      <p class="blocks">Blocks: Ads, trackers and malware</p>
+      <p class="operator">Operated by Windscribe under the ControlD brand. Free tier, no account required. Homepage: <code>controld.com/free-dns</code></p>
+      <div class="install-buttons">
+        <a class="btn btn-primary" href="profiles/controld-ads-doh.mobileconfig">Install (DoH)</a>
+        <a class="btn btn-secondary" href="profiles/controld-ads-dot.mobileconfig">Install (DoT)</a>
+      </div>
+      <div class="dot-row">
+        <code>p2.freedns.controld.com</code>
+        <button class="copy-btn" type="button" data-copy="p2.freedns.controld.com">Copy</button>
+      </div>
+      <figure class="qr">
+        <img src="qr/controld-ads-doh.svg" alt="QR code linking to the ControlD Free Ad Blocking DoH profile" width="140" height="140" loading="lazy">
+        <figcaption>Scan to install (DoH)</figcaption>
+      </figure>
+    </article>
+
+    <article class="card">
+      <p class="provider">ControlD</p>
+      <h3>ControlD Free &mdash; Family</h3>
+      <p class="blocks">Blocks: Ads, trackers, malware and adult content</p>
+      <p class="operator">Operated by Windscribe under the ControlD brand. Free tier, no account required. Homepage: <code>controld.com/free-dns</code></p>
+      <div class="install-buttons">
+        <a class="btn btn-primary" href="profiles/controld-family-doh.mobileconfig">Install (DoH)</a>
+        <a class="btn btn-secondary" href="profiles/controld-family-dot.mobileconfig">Install (DoT)</a>
+      </div>
+      <div class="dot-row">
+        <code>family.freedns.controld.com</code>
+        <button class="copy-btn" type="button" data-copy="family.freedns.controld.com">Copy</button>
+      </div>
+      <figure class="qr">
+        <img src="qr/controld-family-doh.svg" alt="QR code linking to the ControlD Free Family DoH profile" width="140" height="140" loading="lazy">
+        <figcaption>Scan to install (DoH)</figcaption>
+      </figure>
+    </article>
+
+    <article class="card">
+      <p class="provider">Cloudflare</p>
+      <h3>Cloudflare &mdash; Security</h3>
+      <p class="blocks">Blocks: Malware only &mdash; does not block ads</p>
+      <p class="no-ad-block">This profile does NOT block ads or trackers. Choose an AdGuard, Mullvad, or ControlD profile above for ad blocking.</p>
+      <p class="operator">Operated by Cloudflare. Homepage: <code>one.one.one.one/family/</code></p>
+      <div class="install-buttons">
+        <a class="btn btn-primary" href="profiles/cloudflare-security-doh.mobileconfig">Install (DoH)</a>
+        <a class="btn btn-secondary" href="profiles/cloudflare-security-dot.mobileconfig">Install (DoT)</a>
+      </div>
+      <div class="dot-row">
+        <code>security.cloudflare-dns.com</code>
+        <button class="copy-btn" type="button" data-copy="security.cloudflare-dns.com">Copy</button>
+      </div>
+      <figure class="qr">
+        <img src="qr/cloudflare-security-doh.svg" alt="QR code linking to the Cloudflare Security DoH profile" width="140" height="140" loading="lazy">
+        <figcaption>Scan to install (DoH)</figcaption>
+      </figure>
+    </article>
+
+    <article class="card">
+      <p class="provider">Cloudflare</p>
+      <h3>Cloudflare &mdash; Family</h3>
+      <p class="blocks">Blocks: Malware and adult content &mdash; does not block ads</p>
+      <p class="no-ad-block">This profile does NOT block ads or trackers. Choose an AdGuard or ControlD family profile above if you want both.</p>
+      <p class="operator">Operated by Cloudflare. Homepage: <code>one.one.one.one/family/</code></p>
+      <div class="install-buttons">
+        <a class="btn btn-primary" href="profiles/cloudflare-family-doh.mobileconfig">Install (DoH)</a>
+        <a class="btn btn-secondary" href="profiles/cloudflare-family-dot.mobileconfig">Install (DoT)</a>
+      </div>
+      <div class="dot-row">
+        <code>family.cloudflare-dns.com</code>
+        <button class="copy-btn" type="button" data-copy="family.cloudflare-dns.com">Copy</button>
+      </div>
+      <figure class="qr">
+        <img src="qr/cloudflare-family-doh.svg" alt="QR code linking to the Cloudflare Family DoH profile" width="140" height="140" loading="lazy">
+        <figcaption>Scan to install (DoH)</figcaption>
+      </figure>
+    </article>
+
+    <article class="card">
+      <p class="provider">CleanBrowsing</p>
+      <h3>CleanBrowsing &mdash; Family Filter</h3>
+      <p class="blocks">Blocks: Adult content, and enforces safe search</p>
+      <p class="operator">Operated by CleanBrowsing. Does not block advertising. Homepage: <code>cleanbrowsing.org/filters/</code></p>
+      <div class="install-buttons">
+        <a class="btn btn-primary" href="profiles/cleanbrowsing-family-doh.mobileconfig">Install (DoH)</a>
+        <a class="btn btn-secondary" href="profiles/cleanbrowsing-family-dot.mobileconfig">Install (DoT)</a>
+      </div>
+      <div class="dot-row">
+        <code>family-filter-dns.cleanbrowsing.org</code>
+        <button class="copy-btn" type="button" data-copy="family-filter-dns.cleanbrowsing.org">Copy</button>
+      </div>
+      <figure class="qr">
+        <img src="qr/cleanbrowsing-family-doh.svg" alt="QR code linking to the CleanBrowsing Family Filter DoH profile" width="140" height="140" loading="lazy">
+        <figcaption>Scan to install (DoH)</figcaption>
+      </figure>
+    </article>
+
+    <article class="card">
+      <p class="provider">CleanBrowsing</p>
+      <h3>CleanBrowsing &mdash; Security Filter</h3>
+      <p class="blocks">Blocks: Malware and phishing &mdash; does not block ads</p>
+      <p class="operator">Operated by CleanBrowsing. Does not block advertising or adult content. Homepage: <code>cleanbrowsing.org/filters/</code></p>
+      <div class="install-buttons">
+        <a class="btn btn-primary" href="profiles/cleanbrowsing-security-doh.mobileconfig">Install (DoH)</a>
+        <a class="btn btn-secondary" href="profiles/cleanbrowsing-security-dot.mobileconfig">Install (DoT)</a>
+      </div>
+      <div class="dot-row">
+        <code>security-filter-dns.cleanbrowsing.org</code>
+        <button class="copy-btn" type="button" data-copy="security-filter-dns.cleanbrowsing.org">Copy</button>
+      </div>
+      <figure class="qr">
+        <img src="qr/cleanbrowsing-security-doh.svg" alt="QR code linking to the CleanBrowsing Security Filter DoH profile" width="140" height="140" loading="lazy">
+        <figcaption>Scan to install (DoH)</figcaption>
+      </figure>
+    </article>
+
+  </div>
+</section>
+
+<section id="install-ios">
+  <h2>Install on iPhone or iPad</h2>
+  <ol>
+    <li>On your device, tap the <strong>Install (DoH)</strong> button on the profile card above. (DoT also works on iOS if you prefer it; DoH is recommended because it plays more predictably with captive portals.)</li>
+    <li>Safari will open Settings and show <strong>Profile Downloaded</strong>. Tap it.</li>
+    <li>Tap <strong>Install</strong> in the top-right corner, enter your device passcode if asked, then tap <strong>Install</strong> again on the two confirmation screens.</li>
+  </ol>
+  <figure>
+    <img src="screenshots/ios-install.svg" alt="Screenshot of the iOS profile install screen" loading="lazy">
+  </figure>
+  <div class="callout">
+    <strong>You will see a red "Not Signed" warning &mdash; this is expected.</strong>
+    <p>These profiles are not cryptographically signed by a paid Apple developer certificate, so iOS marks them "Not Signed" in red. This does not mean the profile is unsafe or broken; it means Apple cannot vouch for who published it. You can always inspect exactly what a profile changes (only DNS settings) before installing by tapping "More Details" on the install screen.</p>
+  </div>
+  <p>To switch to a different profile later, or to see which one is active, go to <strong>Settings &rarr; General &rarr; VPN &amp; Device Management</strong>. Remove the old profile there before installing a new one.</p>
+  <figure>
+    <img src="screenshots/ios-dns-selector.svg" alt="Illustrative mockup of the iOS DNS profile selector under Settings, General, VPN and Device Management, showing four installed profiles with one checked as active" loading="lazy">
+    <figcaption>Settings &rarr; General &rarr; VPN &amp; Device Management is also where you switch between profiles you've installed.</figcaption>
+  </figure>
+</section>
+
+<section id="install-android">
+  <h2>Install on Android</h2>
+  <p>Android does not use <code>.mobileconfig</code> files. Instead, enter the <strong>DoT hostname</strong> from the profile card above into Android's built-in <strong>Private DNS</strong> setting (requires <strong>Android 9 or later</strong>, and only the DoT hostname &mdash; not DoH &mdash; works here).</p>
+  <div class="platform-block">
+    <h3>Stock Android</h3>
+    <ol>
+      <li>Open <strong>Settings &rarr; Network &amp; internet &rarr; Private DNS</strong>.</li>
+      <li>Choose <strong>Private DNS provider hostname</strong>.</li>
+      <li>Paste in the hostname you copied from the profile card (use the <strong>Copy</strong> button next to it).</li>
+      <li>Tap <strong>Save</strong>.</li>
+    </ol>
+  </div>
+  <div class="platform-block">
+    <h3>Samsung (One UI)</h3>
+    <ol>
+      <li>Open <strong>Settings &rarr; Connections &rarr; More connection settings &rarr; Private DNS</strong>.</li>
+      <li>Choose <strong>Private DNS provider hostname</strong>.</li>
+      <li>Paste in the hostname and tap <strong>Save</strong>.</li>
+    </ol>
+  </div>
+  <figure>
+    <img src="screenshots/android-private-dns.svg" alt="Screenshot of the Android Private DNS setting" loading="lazy">
+  </figure>
+</section>
+
+<section id="install-macos">
+  <h2>Install on macOS</h2>
+  <ol>
+    <li>Click the <strong>Install (DoH)</strong> button on the profile card above; the file downloads to your Mac.</li>
+    <li>Open <strong>System Settings &rarr; General &rarr; Device Management</strong>.</li>
+    <li>Select the downloaded profile and click <strong>Install</strong>, entering your Mac password if asked.</li>
+  </ol>
+  <p>The same "Not Signed" warning described in the iPhone section applies here too, and for the same reason.</p>
+</section>
+
+<section id="check-it-is-working">
+  <h2>Check it is working</h2>
+  <ol>
+    <li>Visit your chosen provider's DNS test page in a browser, for example <code>1.1.1.1/help</code> (Cloudflare) or the test page listed on your provider's homepage above, and confirm it reports the expected resolver.</li>
+    <li>Load a page you know carries ads and confirm they no longer appear (for the profiles above that block ads &mdash; remember the two Cloudflare profiles do not).</li>
+    <li>If nothing changed, re-check <strong>Settings &rarr; General &rarr; VPN &amp; Device Management</strong> (iOS/macOS) or <strong>Private DNS</strong> (Android) to confirm the profile is installed and active, not just downloaded.</li>
+  </ol>
+</section>
+
+<section id="faq">
+  <h2>FAQ</h2>
+  <dl>
+    <dt>Is this a VPN?</dt>
+    <dd>No. Only DNS lookups are sent to the new resolver, encrypted. Your actual web traffic still goes directly to each site, exactly as before.</dd>
+
+    <dt>Does it cost anything?</dt>
+    <dd>No. Every profile here uses a resolver's free public tier. No account or subscription is required for any of them.</dd>
+
+    <dt>Does it slow down browsing?</dt>
+    <dd>DNS lookups are cached by your device and usually happen well before a page loads, so any difference is generally imperceptible. Encrypted DNS can occasionally add a small amount of latency to the first lookup of a new domain compared to plain, unencrypted DNS.</dd>
+
+    <dt>How do I remove a profile?</dt>
+    <dd>iOS/macOS: <strong>Settings &rarr; General &rarr; VPN &amp; Device Management</strong> (or <strong>System Settings &rarr; General &rarr; Device Management</strong> on Mac), select the profile, then Remove. Android: open <strong>Private DNS</strong> and switch it back to <strong>Automatic</strong> or <strong>Off</strong>.</dd>
+
+    <dt>What happens on a network that blocks DNS-over-HTTPS?</dt>
+    <dd>Some corporate, school, or hotel networks block encrypted DNS to keep their own filtering in place. If DoH stops working, try the DoT version of the same profile; if both are blocked, the device typically falls back to the network's own DNS, or you can temporarily remove the profile.</dd>
+  </dl>
+</section>
+
+</main>
+
+<footer>
+  <p>Licensed under the MIT License. Built and maintained by Atik Ansari.</p>
+  <p><a href="https://github.com/atikansari-ghr/encrypted-dns-profiles">github.com/atikansari-ghr/encrypted-dns-profiles</a></p>
+</footer>
+
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      navigator.clipboard.writeText(button.dataset.copy).then(function () {
+        var original = button.textContent;
+        button.textContent = 'Copied';
+        setTimeout(function () { button.textContent = original; }, 1500);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
