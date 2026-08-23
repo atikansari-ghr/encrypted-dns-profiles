@@ -1,0 +1,36 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install test dependencies
+        run: python -m pip install --upgrade pip pytest
+
+      - name: Run unit tests
+        run: python -m pytest -v
+
+      - name: Regenerate profiles
+        run: python scripts/generate_profiles.py
+
+      - name: Fail if the committed profiles drifted from the catalogue
+        run: |
+          if ! git diff --exit-code --stat docs/profiles; then
+            echo "::error::docs/profiles is out of date. Run: python scripts/generate_profiles.py"
+            exit 1
+          fi
+
+      - name: Validate profile structure
+        run: python scripts/validate_profiles.py
