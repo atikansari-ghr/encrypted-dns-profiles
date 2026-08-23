@@ -27,8 +27,9 @@ jobs:
 
       - name: Fail if the committed profiles drifted from the catalogue
         run: |
-          if ! git diff --exit-code --stat docs/profiles; then
+          if [ -n "$(git status --porcelain -- docs/profiles)" ]; then
             echo "::error::docs/profiles is out of date. Run: python scripts/generate_profiles.py"
+            git status --porcelain -- docs/profiles
             exit 1
           fi
 
