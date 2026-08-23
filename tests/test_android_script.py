@@ -1,7 +1,6 @@
 import os
 import shutil
 import subprocess
-import sys
 from pathlib import Path
 
 import pytest
@@ -26,6 +25,12 @@ def fake_adb(tmp_path):
     on reading back what it just wrote, so a stub that always returned a
     fixed string would make that verification fail for any provider other
     than the one whose hostname happened to match the fixed string.
+
+    If the FAKE_ADB_BOGUS_SPECIFIER environment variable is set, a "get"
+    for private_dns_specifier ignores the stored state and echoes that
+    value instead - this simulates a device that does not actually have
+    the specifier the script just wrote, so tests can exercise the
+    read-back mismatch path without weakening the stub's normal behaviour.
     """
     log = tmp_path / "adb.log"
     state_dir = tmp_path / "state"
@@ -38,7 +43,9 @@ def fake_adb(tmp_path):
         'echo "emulator-5554\tdevice"; fi\n'
         f'if [ "$1" = "shell" ] && [ "$2" = "settings" ] && [ "$3" = "put" ]; then echo "$6" > "{state_dir}/$5"; fi\n'
         f'if [ "$1" = "shell" ] && [ "$2" = "settings" ] && [ "$3" = "get" ]; then '
-        f'if [ -f "{state_dir}/$5" ]; then cat "{state_dir}/$5"; else echo "dns.adguard-dns.com"; fi; fi\n'
+        'if [ -n "${FAKE_ADB_BOGUS_SPECIFIER:-}" ] && [ "$5" = "private_dns_specifier" ]; then '
+        'echo "$FAKE_ADB_BOGUS_SPECIFIER"; '
+        f'elif [ -f "{state_dir}/$5" ]; then cat "{state_dir}/$5"; else echo "dns.adguard-dns.com"; fi; fi\n'
         "exit 0\n",
         encoding="utf-8",
     )
@@ -46,10 +53,12 @@ def fake_adb(tmp_path):
     return stub.parent, log
 
 
-def run(args, path_dir=None):
+def run(args, path_dir=None, extra_env=None):
     env = dict(os.environ)
     if path_dir:
         env["PATH"] = f"{path_dir}{os.pathsep}{env['PATH']}"
+    if extra_env:
+        env.update(extra_env)
     return subprocess.run(
         ["bash", str(SCRIPT), *args],
         capture_output=True,
@@ -80,6 +89,19 @@ def test_set_writes_both_adb_settings(fake_adb):
     logged = log.read_text(encoding="utf-8")
     assert "private_dns_mode hostname" in logged
     assert "private_dns_specifier family.adguard-dns.com" in logged
+
+
+def test_set_fails_when_device_readback_does_not_match(fake_adb):
+    path_dir, _ = fake_adb
+    result = run(
+        ["--set", "adguard-family"],
+        path_dir,
+        extra_env={"FAKE_ADB_BOGUS_SPECIFIER": "not-what-we-wrote.example.com"},
+    )
+    assert result.returncode != 0
+    combined = result.stdout + result.stderr
+    assert "not-what-we-wrote.example.com" in combined
+    assert "family.adguard-dns.com" in combined
 
 
 def test_set_rejects_an_unknown_slug(fake_adb):

@@ -27,10 +27,41 @@ USAGE
 }
 
 # Emit "slug<TAB>hostname" for every catalogue entry.
+#
+# Each [[profiles]] block must list "slug" before "dot_hostname". A pending
+# slug is reset at every block boundary so a hostname can never be paired
+# with a slug from a different block; if a block (or the file) ends with a
+# slug that never got a matching dot_hostname, that is treated as a
+# malformed catalogue and the script fails loudly instead of guessing.
 catalogue() {
   awk '
-    /^slug *=/        { gsub(/.*= *"|"/, ""); slug = $0 }
-    /^dot_hostname *=/ { gsub(/.*= *"|"/, ""); if (slug != "") { print slug "\t" $0; slug = "" } }
+    index($0, "[[profiles]]") == 1 {
+      if (slug != "") {
+        print "catalogue: provider slug " slug " in providers.toml has no dot_hostname (malformed catalogue)" > "/dev/stderr"
+        slug = ""
+        exit 1
+      }
+      next
+    }
+    /^slug *=/ {
+      gsub(/.*= *"|"/, "")
+      slug = $0
+      next
+    }
+    /^dot_hostname *=/ {
+      gsub(/.*= *"|"/, "")
+      if (slug != "") {
+        print slug "\t" $0
+        slug = ""
+      }
+      next
+    }
+    END {
+      if (slug != "") {
+        print "catalogue: provider slug " slug " in providers.toml has no dot_hostname (malformed catalogue)" > "/dev/stderr"
+        exit 1
+      }
+    }
   ' "$CATALOG"
 }
 
