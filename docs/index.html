@@ -628,11 +628,31 @@
 <script>
   document.querySelectorAll('[data-copy]').forEach(function (button) {
     button.addEventListener('click', function () {
-      navigator.clipboard.writeText(button.dataset.copy).then(function () {
-        var original = button.textContent;
-        button.textContent = 'Copied';
+      var original = button.textContent;
+      function revert() {
         setTimeout(function () { button.textContent = original; }, 1500);
-      });
+      }
+      function fallback() {
+        var row = button.parentElement;
+        var code = row ? row.querySelector('code') : null;
+        if (code && window.getSelection && document.createRange) {
+          var range = document.createRange();
+          range.selectNodeContents(code);
+          var selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+        }
+        button.textContent = 'Select and copy';
+        revert();
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(button.dataset.copy).then(function () {
+          button.textContent = 'Copied';
+          revert();
+        }).catch(fallback);
+      } else {
+        fallback();
+      }
     });
   });
 </script>
