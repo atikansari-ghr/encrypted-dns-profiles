@@ -32,6 +32,15 @@ def probe_doh(url: str, timeout: float = 10.0) -> tuple[bool, str]:
                 return False, f"HTTP {response.status}"
             if not body:
                 return False, "HTTP 200 with empty body"
+            if len(body) < 12:
+                return False, f"HTTP 200 with truncated DNS response ({len(body)} bytes, need >=12)"
+            if body[0:2] != b"\x00\x00":
+                return False, f"HTTP 200 but response transaction ID is {body[0:2].hex()}, not 0000"
+            if not (body[2] & 0x80):
+                return False, "HTTP 200 but response is a query, not a response (QR bit not set)"
+            content_type = response.headers.get("Content-Type")
+            if content_type and content_type != "application/dns-message":
+                return False, f"HTTP 200 but Content-Type is {content_type}, not application/dns-message"
             return True, f"HTTP 200, {len(body)} bytes"
     except urllib.error.HTTPError as exc:
         return False, f"HTTP {exc.code}"
