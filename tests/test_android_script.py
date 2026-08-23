@@ -8,8 +8,13 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = REPO_ROOT / "scripts" / "android-private-dns.sh"
 
+# Resolve bash to an absolute path once, before any test mutates PATH inside
+# a subprocess's env. Tests that replace PATH (e.g. to hide adb) must still
+# be able to locate the bash binary itself.
+BASH = shutil.which("bash")
+
 pytestmark = pytest.mark.skipif(
-    shutil.which("bash") is None,
+    BASH is None,
     reason="bash is required to run the Android helper script",
 )
 
@@ -60,7 +65,7 @@ def run(args, path_dir=None, extra_env=None):
     if extra_env:
         env.update(extra_env)
     return subprocess.run(
-        ["bash", str(SCRIPT), *args],
+        [BASH, str(SCRIPT), *args],
         capture_output=True,
         text=True,
         env=env,
@@ -121,7 +126,7 @@ def test_fails_cleanly_when_adb_is_absent(tmp_path):
     env = dict(os.environ)
     env["PATH"] = str(tmp_path)
     result = subprocess.run(
-        ["bash", str(SCRIPT), "--status"],
+        [BASH, str(SCRIPT), "--status"],
         capture_output=True,
         text=True,
         env=env,
