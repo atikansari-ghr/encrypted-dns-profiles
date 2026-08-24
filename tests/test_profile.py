@@ -8,6 +8,7 @@ from dnsprofiles.profile import (
     PAGES_BASE,
     PROTOCOLS,
     build_profile,
+    card_url,
     profile_filename,
     profile_url,
     to_plist_bytes,
@@ -36,6 +37,10 @@ def test_filename_and_url():
     assert profile_url("adguard-family", "doh") == (
         f"{PAGES_BASE}/profiles/adguard-family-doh.mobileconfig"
     )
+
+
+def test_card_url():
+    assert card_url("adguard-family") == f"{PAGES_BASE}/#adguard-family"
 
 
 def test_doh_payload_uses_server_url_and_https_protocol():

@@ -63,6 +63,23 @@ def test_every_qr_card_can_toggle_between_doh_and_dot():
     assert html.count('data-protocol="doh"') == html.count('data-protocol="dot"')
 
 
+def test_every_card_has_an_id_matching_its_slug():
+    """The Android QR codes anchor-link to #<slug>; the card must actually
+    have that id, or scanning one lands on the top of the page instead of
+    the card it claims to point at.
+    """
+    html = INDEX.read_text(encoding="utf-8")
+    for spec in load_catalog(DEFAULT_CATALOG_PATH):
+        assert f'<article class="card" id="{spec.slug}">' in html
+
+
+def test_every_card_has_an_android_anchor_qr():
+    html = INDEX.read_text(encoding="utf-8")
+    for spec in load_catalog(DEFAULT_CATALOG_PATH):
+        assert f'src="qr/{spec.slug}-android.svg"' in html
+    assert html.count("platform-label") >= 2 * len(load_catalog(DEFAULT_CATALOG_PATH))
+
+
 def test_speed_test_matches_the_catalogue():
     html = INDEX.read_text(encoding="utf-8")
     pairs = re.findall(r"slug: '([a-z-]+)'.*?dohUrl: '([^']+)'", html)

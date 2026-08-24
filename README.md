@@ -52,6 +52,8 @@ You can install more than one profile; iOS keeps them all and lets you pick whic
 
 Android has **no equivalent of an Apple `.mobileconfig` file**. There is no profile to download and no per-app or per-network exception — Private DNS is a single system-wide switch, and it accepts **DNS-over-TLS (DoT) only**; none of the DoH profiles above have an Android equivalent. Requires **Android 9 or later**.
 
+Each card on the install site is split into an **iOS · iPadOS · macOS** zone (install buttons and QR code) and a separate **Android** zone (hostname, Copy button, and its own QR code). The Android QR does not install anything — Android has nothing to install — it opens this site anchored to that exact card, so scanning it on a laptop screen with an Android phone jumps straight to the hostname and Copy button instead of typing a long domain name by hand.
+
 Use the DoT hostname from the table above.
 
 **Stock Android:**

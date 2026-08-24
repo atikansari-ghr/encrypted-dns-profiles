@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Each install-site card now visually separates its iOS/iPadOS/macOS
+  controls from its Android controls, with a divider and platform labels,
+  instead of leaving the reader to work out which button does what on
+  which platform.
+- A second QR code per card, specifically for Android: since Android has
+  no file to install, it encodes a link back to this site anchored to
+  that exact card (`#<slug>`) rather than a `.mobileconfig` link, so
+  scanning it lands on the hostname and Copy button instead of a file
+  Android can't open. `dnsprofiles/profile.py` gained `card_url()` for
+  this; `scripts/make_qr.py` now generates 24 QR codes (16 install + 8
+  Android) instead of 16.
+
 ### Removed
 - Mullvad Adblock. Several networks reset the connection to Mullvad's
   resolver and to mullvad.net itself outright, so a profile pointing at it

@@ -24,6 +24,11 @@ def profile_url(slug: str, protocol: str) -> str:
     return f"{PAGES_BASE}/profiles/{profile_filename(slug, protocol)}"
 
 
+def card_url(slug: str) -> str:
+    """The install site's own page, anchored to one profile's card."""
+    return f"{PAGES_BASE}/#{slug}"
+
+
 def _identifier(slug: str, protocol: str) -> str:
     return f"{IDENTIFIER_PREFIX}.{slug}-{protocol}"
 
