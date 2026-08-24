@@ -32,7 +32,7 @@
 		</dict>
 	</array>
 	<key>PayloadDescription</key>
-	<string>Blocks known malware domains. Operated by Cloudflare. This profile does NOT block advertising or trackers - choose an AdGuard, Mullvad or ControlD profile for that.
+	<string>Blocks known malware domains. Operated by Cloudflare. This profile does NOT block advertising or trackers - choose an AdGuard or ControlD profile for that.
 
 Blocks: Malware only - does not block ads.
 Transport: DNS-over-HTTPS.

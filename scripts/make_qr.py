@@ -35,6 +35,12 @@ def generate_qr_codes(
                     handle, kind="svg", scale=4, border=2, dark="#111111", light=None
                 )
             written.append(path)
+
+    expected = {path.name for path in written}
+    for existing in output_dir.glob("*.svg"):
+        if existing.name not in expected:
+            existing.unlink()
+
     return sorted(written, key=lambda path: path.name)
 
 

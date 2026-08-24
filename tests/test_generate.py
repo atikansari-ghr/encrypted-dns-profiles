@@ -10,7 +10,7 @@ OUTPUT = Path(__file__).resolve().parent.parent / "docs" / "profiles"
 def test_generates_two_files_per_catalogue_entry(tmp_path):
     written = generate_all(DEFAULT_CATALOG_PATH, tmp_path)
     assert len(written) == 2 * len(load_catalog(DEFAULT_CATALOG_PATH))
-    assert len(written) == 18
+    assert len(written) == 16
 
 
 def test_every_written_file_parses_as_a_plist(tmp_path):

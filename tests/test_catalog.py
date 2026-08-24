@@ -80,7 +80,7 @@ def test_rejects_empty_addresses(tmp_path):
         load_catalog(write(tmp_path, bad))
 
 
-def test_real_catalogue_has_nine_unique_entries():
+def test_real_catalogue_has_eight_unique_entries():
     specs = load_catalog(DEFAULT_CATALOG_PATH)
-    assert len(specs) == 9
-    assert len({s.slug for s in specs}) == 9
+    assert len(specs) == 8
+    assert len({s.slug for s in specs}) == 8

@@ -30,18 +30,6 @@ dot_hostname = "family.adguard-dns.com"
 addresses = ["94.140.14.15", "94.140.15.16"]
 
 [[profiles]]
-slug = "mullvad-adblock"
-provider = "Mullvad"
-variant = "Adblock"
-display_name = "Mullvad DNS - Adblock"
-blocks = "Ads and trackers"
-description = "Blocks advertising and tracking domains. Operated by Mullvad VPN AB in Sweden, with a published no-logging policy. Free to use without a Mullvad account."
-homepage = "https://mullvad.net/en/help/dns-over-https-and-dns-over-tls"
-doh_url = "https://adblock.dns.mullvad.net/dns-query"
-dot_hostname = "adblock.dns.mullvad.net"
-addresses = ["194.242.2.3"]
-
-[[profiles]]
 slug = "controld-ads"
 provider = "ControlD"
 variant = "Free - Ads"
@@ -71,7 +59,7 @@ provider = "Cloudflare"
 variant = "Security"
 display_name = "Cloudflare - Security"
 blocks = "Malware only - does not block ads"
-description = "Blocks known malware domains. Operated by Cloudflare. This profile does NOT block advertising or trackers - choose an AdGuard, Mullvad or ControlD profile for that."
+description = "Blocks known malware domains. Operated by Cloudflare. This profile does NOT block advertising or trackers - choose an AdGuard or ControlD profile for that."
 homepage = "https://one.one.one.one/family/"
 doh_url = "https://security.cloudflare-dns.com/dns-query"
 dot_hostname = "security.cloudflare-dns.com"

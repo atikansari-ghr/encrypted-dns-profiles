@@ -13,7 +13,7 @@ OUTPUT = Path(__file__).resolve().parent.parent / "docs" / "qr"
 
 def test_generates_one_qr_per_profile(tmp_path):
     written = generate_qr_codes(DEFAULT_CATALOG_PATH, tmp_path)
-    assert len(written) == 18
+    assert len(written) == 16
     assert (tmp_path / "adguard-default-doh.svg").exists()
 
 

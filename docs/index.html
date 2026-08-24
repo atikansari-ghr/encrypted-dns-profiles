@@ -473,7 +473,7 @@
   <p><em>The screen images on this page are illustrative mockups, not real screenshots.</em></p>
 
   <figure class="mockup-wide">
-    <img src="screenshots/provider-comparison.svg" alt="Comparison table of what each of the nine profiles blocks: ads, trackers, malware and adult content. The two Cloudflare rows are empty in the ads and trackers columns." loading="lazy">
+    <img src="screenshots/provider-comparison.svg" alt="Comparison table of what each of the eight profiles blocks: ads, trackers, malware and adult content. The two Cloudflare rows are empty in the ads and trackers columns." loading="lazy">
     <figcaption>What each profile blocks, at a glance. Note the two Cloudflare rows do not cover ads or trackers.</figcaption>
   </figure>
 
@@ -575,7 +575,7 @@
       <p class="provider">Cloudflare</p>
       <h3>Cloudflare &mdash; Security</h3>
       <p class="blocks">Blocks: Malware only &mdash; does not block ads</p>
-      <p class="no-ad-block">This profile does NOT block ads or trackers. Choose an AdGuard, Mullvad, or ControlD profile above for ad blocking.</p>
+      <p class="no-ad-block">This profile does NOT block ads or trackers. Choose an AdGuard or ControlD profile above for ad blocking.</p>
       <p class="operator">Operated by Cloudflare. Homepage: <code>one.one.one.one/family/</code></p>
       <div class="install-buttons">
         <a class="btn btn-primary" href="profiles/cloudflare-security-doh.mobileconfig">Install (DoH)</a>
@@ -665,29 +665,6 @@
       </figure>
     </article>
 
-    <article class="card">
-      <p class="provider">Mullvad</p>
-      <h3>Mullvad DNS &mdash; Adblock</h3>
-      <p class="blocks">Blocks: Ads and trackers</p>
-      <p class="operator">Operated by Mullvad VPN AB (Sweden), published no-logging policy. No Mullvad account needed. Homepage: <code>mullvad.net</code></p>
-      <div class="install-buttons">
-        <a class="btn btn-primary" href="profiles/mullvad-adblock-doh.mobileconfig">Install (DoH)</a>
-        <a class="btn btn-secondary" href="profiles/mullvad-adblock-dot.mobileconfig">Install (DoT)</a>
-      </div>
-      <div class="dot-row">
-        <code>adblock.dns.mullvad.net</code>
-        <button class="copy-btn" type="button" data-copy="adblock.dns.mullvad.net">Copy</button>
-      </div>
-      <figure class="qr" data-slug="mullvad-adblock" data-name="Mullvad DNS Adblock">
-        <div class="qr-toggle" role="group" aria-label="QR code protocol">
-          <button type="button" class="qr-toggle-btn is-active" data-protocol="doh" aria-pressed="true">DoH</button>
-          <button type="button" class="qr-toggle-btn" data-protocol="dot" aria-pressed="false">DoT</button>
-        </div>
-        <img src="qr/mullvad-adblock-doh.svg" alt="QR code linking to the Mullvad DNS Adblock DoH profile" width="140" height="140" loading="lazy">
-        <figcaption>Scan to install (DoH)</figcaption>
-      </figure>
-    </article>
-
   </div>
 </section>
 
@@ -771,7 +748,7 @@
   <p>Every profile above is encrypted; how fast each one answers depends on your own location and network, not on anything this project controls. Rather than publish a fixed number that would be wrong for most visitors, this runs a real, timed DNS query to each provider directly from your browser.</p>
 
   <div class="note">
-    <strong>This is the one thing on this page that runs automatically-on-click network requests to nine third parties.</strong>
+    <strong>This is the one thing on this page that runs automatically-on-click network requests to eight third parties.</strong>
     <p>Nothing is sent to this project. Each request goes straight from your browser to that provider's own resolver, the same way your device would if you installed its profile. A provider blocked or filtered on your network (this happens &mdash; some networks block certain DNS providers outright) will show as unreachable rather than a time.</p>
   </div>
 
@@ -882,8 +859,7 @@
       { slug: 'cloudflare-security', name: 'Cloudflare — Security', color: '#F6821F', dohUrl: 'https://security.cloudflare-dns.com/dns-query' },
       { slug: 'cloudflare-family', name: 'Cloudflare — Family', color: '#F6821F', dohUrl: 'https://family.cloudflare-dns.com/dns-query' },
       { slug: 'cleanbrowsing-family', name: 'CleanBrowsing — Family Filter', color: '#2FA84F', dohUrl: 'https://doh.cleanbrowsing.org/doh/family-filter/' },
-      { slug: 'cleanbrowsing-security', name: 'CleanBrowsing — Security Filter', color: '#2FA84F', dohUrl: 'https://doh.cleanbrowsing.org/doh/security-filter/' },
-      { slug: 'mullvad-adblock', name: 'Mullvad DNS — Adblock', color: '#7C4DFF', dohUrl: 'https://adblock.dns.mullvad.net/dns-query' }
+      { slug: 'cleanbrowsing-security', name: 'CleanBrowsing — Security Filter', color: '#2FA84F', dohUrl: 'https://doh.cleanbrowsing.org/doh/security-filter/' }
     ];
 
     var btn = document.getElementById('speed-test-btn');
@@ -923,7 +899,7 @@
 
     btn.addEventListener('click', function () {
       btn.disabled = true;
-      status.textContent = 'Testing all nine providers from your browser — this takes a few seconds…';
+      status.textContent = 'Testing all eight providers from your browser — this takes a few seconds…';
       results.innerHTML = '';
       var rows = {};
       PROVIDERS.forEach(function (provider) {

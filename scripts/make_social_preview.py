@@ -38,8 +38,8 @@ COLOR_RULE = (229, 229, 234)  # #E5E5EA
 
 PROJECT_NAME = "Encrypted DNS Profiles"
 STRAPLINE = "Ad blocking and family protection for iOS, iPadOS, macOS and Android"
-PROVIDERS_LINE = "AdGuard \u00b7 Mullvad \u00b7 ControlD \u00b7 Cloudflare \u00b7 CleanBrowsing"
-FOOTER_LINE = "18 ready-to-install profiles \u00b7 DoH and DoT"
+PROVIDERS_LINE = "AdGuard \u00b7 ControlD \u00b7 Cloudflare \u00b7 CleanBrowsing"
+FOOTER_LINE = "16 ready-to-install profiles \u00b7 DoH and DoT"
 
 
 def _load_font(candidates: list[str], size: int) -> ImageFont.FreeTypeFont:

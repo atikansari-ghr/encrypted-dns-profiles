@@ -6,7 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-No changes yet.
+### Removed
+- Mullvad Adblock. Several networks reset the connection to Mullvad's
+  resolver and to mullvad.net itself outright, so a profile pointing at it
+  can leave a device unable to resolve anything at all until the profile is
+  removed. The remaining eight profiles (four providers, two variants each)
+  were all confirmed reachable. `scripts/make_qr.py` was also fixed to
+  delete a provider's QR codes when it is removed from the catalogue,
+  matching the behaviour `dnsprofiles/generate.py` already had for
+  `.mobileconfig` files — this repository's own removal is what surfaced
+  the gap.
 
 ## [1.0.0] - 2026-08-22
 

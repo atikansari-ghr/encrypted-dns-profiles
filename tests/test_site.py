@@ -66,22 +66,30 @@ def test_every_qr_card_can_toggle_between_doh_and_dot():
 def test_speed_test_matches_the_catalogue():
     html = INDEX.read_text(encoding="utf-8")
     pairs = re.findall(r"slug: '([a-z-]+)'.*?dohUrl: '([^']+)'", html)
-    assert len(pairs) == 9
+    assert len(pairs) == 8
     by_slug = {spec.slug: spec.doh_url for spec in load_catalog(DEFAULT_CATALOG_PATH)}
     for slug, doh_url in pairs:
         assert by_slug[slug] == doh_url, f"{slug}: page has {doh_url!r}, catalogue has {by_slug[slug]!r}"
     assert {slug for slug, _ in pairs} == set(by_slug)
 
 
-def test_same_provider_variants_sit_side_by_side():
-    """The 2-column card grid must not split a provider's own pair across
-    rows. Mullvad is the only single-variant provider, so it must trail
-    every paired provider rather than sit between two of them.
+def test_two_variant_providers_sit_side_by_side():
+    """The 2-column card grid must not split a provider's own variants
+    across rows: a provider with exactly two catalogue entries must have
+    its two cards adjacent in DOM order, so they land in the same row.
     """
     html = INDEX.read_text(encoding="utf-8")
-    mullvad_index = html.index('data-slug="mullvad-adblock"')
-    for spec in load_catalog(DEFAULT_CATALOG_PATH):
-        if spec.slug == "mullvad-adblock":
+    specs = load_catalog(DEFAULT_CATALOG_PATH)
+
+    positions = {spec.slug: html.index(f'data-slug="{spec.slug}"') for spec in specs}
+    slugs_by_dom_order = [slug for slug, _ in sorted(positions.items(), key=lambda item: item[1])]
+
+    by_provider: dict[str, list[str]] = {}
+    for spec in specs:
+        by_provider.setdefault(spec.provider, []).append(spec.slug)
+
+    for provider, slugs in by_provider.items():
+        if len(slugs) != 2:
             continue
-        other_index = html.index(f'data-slug="{spec.slug}"')
-        assert other_index < mullvad_index, f"{spec.slug} card appears after Mullvad's"
+        indices = sorted(slugs_by_dom_order.index(slug) for slug in slugs)
+        assert indices[1] - indices[0] == 1, f"{provider}'s two cards are not adjacent in the grid"
