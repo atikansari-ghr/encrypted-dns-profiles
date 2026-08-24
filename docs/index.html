@@ -462,6 +462,14 @@
     margin: 0 auto;
   }
 
+  /* The comparison graphic is a data table people need to actually read,
+     not a UI-flow illustration, so it gets the full content width instead
+     of the moderate cap the phone/browser mockups use. */
+  figure.mockup-full img {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
   .platform-block {
     margin-bottom: 1.5rem;
   }
@@ -521,7 +529,7 @@
 
   <p><em>The screen images on this page are illustrative mockups, not real screenshots.</em></p>
 
-  <figure class="mockup-wide">
+  <figure class="mockup-full">
     <img src="screenshots/provider-comparison.svg" alt="Comparison table of what each of the eight profiles blocks: ads, trackers, malware and adult content. The two Cloudflare rows are empty in the ads and trackers columns." loading="lazy">
     <figcaption>What each profile blocks, at a glance. Note the two Cloudflare rows do not cover ads or trackers.</figcaption>
   </figure>
