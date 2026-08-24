@@ -102,9 +102,11 @@ Every variant, in both DoH and DoT. Links point at the install site, which serve
 
 ## Check it is working
 
-1. Visit your provider's DNS test page, for example `1.1.1.1/help` for Cloudflare, or the test page linked from the provider's homepage, and confirm it reports the expected resolver.
-2. Load a page you know carries ads and confirm they no longer appear — for profiles that block ads; remember the two Cloudflare profiles do not.
+1. Visit [dnsleaktest.com](https://dnsleaktest.com/) and confirm it reports the resolver you just installed, not your ISP's default — or use `1.1.1.1/help` for Cloudflare, or the test page linked from the provider's homepage.
+2. For a profile that blocks ads, visit [adblock-tester.com](https://adblock-tester.com/) and confirm it reports ads and trackers as blocked. Skip this for the two Cloudflare profiles — they filter malware only, not ads.
 3. If nothing changed, re-check **Settings → General → VPN & Device Management** (iOS/macOS) or **Private DNS** (Android) to confirm the profile is installed *and active*, not just downloaded.
+
+Both dnsleaktest.com and adblock-tester.com are independent third-party sites — not part of this project and not operated by any of the providers above. The install site also has a **Compare resolver speed** button that times a real DNS query to each provider directly from your browser, so you can see actual round-trip time on your own network rather than a number that would be wrong for most other visitors.
 
 ## Add a provider
 
@@ -140,7 +142,7 @@ python -m pytest
 - A DNS resolver sees every domain your device resolves, even when the query itself is encrypted. Encryption protects the query from anyone else on the network path; it does nothing to hide it from the resolver's operator. Pick a provider whose logging policy you're comfortable with — the comparison table above names the operator for each one.
 - Profiles are unsigned and their XML is readable before you install them, at [`docs/profiles/`](docs/profiles/). See "Not Signed" above for why.
 - Each profile includes bootstrap IP addresses for its resolver, so it does not depend on the network's existing DNS to reach the encrypted resolver in the first place.
-- The install site makes no external requests — no CDN, no web fonts, no analytics, no third-party script of any kind. Everything is inline and local.
+- Loading the install site makes no external requests on its own — no CDN, no web fonts, no analytics, no third-party script of any kind. Everything the page loads by default is inline and local. Three things on the page are the deliberate exception, and only run when you click them: the "Check it is working" section links to [dnsleaktest.com](https://dnsleaktest.com/) and [adblock-tester.com](https://adblock-tester.com/), two independent third-party sites not affiliated with this project or any provider above; and the "Compare resolver speed" section times a real DNS query to each of the nine providers directly from your browser. None of these send anything to this project — they go straight from your device to the provider or test site, the same way installing the profile would.
 - No telemetry, anywhere in this repository or the install site.
 - The weekly endpoint check (the `endpoints` badge above) runs on a GitHub Actions schedule, and GitHub automatically disables scheduled workflows after 60 days with no repository activity. If the repository goes quiet, the check stops running silently until someone triggers it manually (`workflow_dispatch`) or pushes a commit — it is not a standing guarantee.
 

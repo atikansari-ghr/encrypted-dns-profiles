@@ -288,6 +288,58 @@
     border-color: var(--accent);
   }
 
+  #speed-test-status {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    min-height: 1.2em;
+  }
+
+  #speed-test-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .speed-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 72px;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .speed-row .speed-name {
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .speed-track {
+    background: var(--code-bg);
+    border-radius: 6px;
+    height: 10px;
+    overflow: hidden;
+  }
+
+  .speed-fill {
+    height: 100%;
+    border-radius: 6px;
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  .speed-value {
+    text-align: right;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .speed-value.is-error {
+    color: var(--warn-text);
+  }
+
   .callout {
     border: 1px solid var(--warn-border);
     background: var(--warn-bg);
@@ -321,6 +373,19 @@
     display: block;
     border: 1px solid var(--border);
     border-radius: 8px;
+  }
+
+  /* The mockups are drawn at print-sized viewBoxes; without a cap smaller
+     than the 880px content column they render far larger on screen than a
+     real phone or browser window ever would. */
+  figure.mockup-narrow img {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  figure.mockup-wide img {
+    max-width: 560px;
+    margin: 0 auto;
   }
 
   .platform-block {
@@ -376,7 +441,7 @@
 
   <p><em>The screen images on this page are illustrative mockups, not real screenshots.</em></p>
 
-  <figure>
+  <figure class="mockup-wide">
     <img src="screenshots/provider-comparison.svg" alt="Comparison table of what each of the nine profiles blocks: ads, trackers, malware and adult content. The two Cloudflare rows are empty in the ads and trackers columns." loading="lazy">
     <figcaption>What each profile blocks, at a glance. Note the two Cloudflare rows do not cover ads or trackers.</figcaption>
   </figure>
@@ -425,29 +490,6 @@
           <button type="button" class="qr-toggle-btn" data-protocol="dot" aria-pressed="false">DoT</button>
         </div>
         <img src="qr/adguard-family-doh.svg" alt="QR code linking to the AdGuard DNS Family Protection DoH profile" width="140" height="140" loading="lazy">
-        <figcaption>Scan to install (DoH)</figcaption>
-      </figure>
-    </article>
-
-    <article class="card">
-      <p class="provider">Mullvad</p>
-      <h3>Mullvad DNS &mdash; Adblock</h3>
-      <p class="blocks">Blocks: Ads and trackers</p>
-      <p class="operator">Operated by Mullvad VPN AB (Sweden), published no-logging policy. No Mullvad account needed. Homepage: <code>mullvad.net</code></p>
-      <div class="install-buttons">
-        <a class="btn btn-primary" href="profiles/mullvad-adblock-doh.mobileconfig">Install (DoH)</a>
-        <a class="btn btn-secondary" href="profiles/mullvad-adblock-dot.mobileconfig">Install (DoT)</a>
-      </div>
-      <div class="dot-row">
-        <code>adblock.dns.mullvad.net</code>
-        <button class="copy-btn" type="button" data-copy="adblock.dns.mullvad.net">Copy</button>
-      </div>
-      <figure class="qr" data-slug="mullvad-adblock" data-name="Mullvad DNS Adblock">
-        <div class="qr-toggle" role="group" aria-label="QR code protocol">
-          <button type="button" class="qr-toggle-btn is-active" data-protocol="doh" aria-pressed="true">DoH</button>
-          <button type="button" class="qr-toggle-btn" data-protocol="dot" aria-pressed="false">DoT</button>
-        </div>
-        <img src="qr/mullvad-adblock-doh.svg" alt="QR code linking to the Mullvad DNS Adblock DoH profile" width="140" height="140" loading="lazy">
         <figcaption>Scan to install (DoH)</figcaption>
       </figure>
     </article>
@@ -592,6 +634,29 @@
       </figure>
     </article>
 
+    <article class="card">
+      <p class="provider">Mullvad</p>
+      <h3>Mullvad DNS &mdash; Adblock</h3>
+      <p class="blocks">Blocks: Ads and trackers</p>
+      <p class="operator">Operated by Mullvad VPN AB (Sweden), published no-logging policy. No Mullvad account needed. Homepage: <code>mullvad.net</code></p>
+      <div class="install-buttons">
+        <a class="btn btn-primary" href="profiles/mullvad-adblock-doh.mobileconfig">Install (DoH)</a>
+        <a class="btn btn-secondary" href="profiles/mullvad-adblock-dot.mobileconfig">Install (DoT)</a>
+      </div>
+      <div class="dot-row">
+        <code>adblock.dns.mullvad.net</code>
+        <button class="copy-btn" type="button" data-copy="adblock.dns.mullvad.net">Copy</button>
+      </div>
+      <figure class="qr" data-slug="mullvad-adblock" data-name="Mullvad DNS Adblock">
+        <div class="qr-toggle" role="group" aria-label="QR code protocol">
+          <button type="button" class="qr-toggle-btn is-active" data-protocol="doh" aria-pressed="true">DoH</button>
+          <button type="button" class="qr-toggle-btn" data-protocol="dot" aria-pressed="false">DoT</button>
+        </div>
+        <img src="qr/mullvad-adblock-doh.svg" alt="QR code linking to the Mullvad DNS Adblock DoH profile" width="140" height="140" loading="lazy">
+        <figcaption>Scan to install (DoH)</figcaption>
+      </figure>
+    </article>
+
   </div>
 </section>
 
@@ -602,7 +667,7 @@
     <li>Safari will open Settings and show <strong>Profile Downloaded</strong>. Tap it.</li>
     <li>Tap <strong>Install</strong> in the top-right corner, enter your device passcode if asked, then tap <strong>Install</strong> again on the two confirmation screens.</li>
   </ol>
-  <figure>
+  <figure class="mockup-wide">
     <img src="screenshots/ios-install.svg" alt="Illustrative mockup of the iOS profile install screen" loading="lazy">
   </figure>
   <div class="callout">
@@ -610,7 +675,7 @@
     <p>These profiles are not cryptographically signed by a paid Apple developer certificate, so iOS marks them "Not Signed" in red. This does not mean the profile is unsafe or broken; it means Apple cannot vouch for who published it. You can always inspect exactly what a profile changes (only DNS settings) before installing by tapping "More Details" on the install screen.</p>
   </div>
   <p>You can install more than one profile; iOS keeps them all and lets you pick which one is active under <strong>Settings &rarr; General &rarr; VPN &amp; Device Management</strong>.</p>
-  <figure>
+  <figure class="mockup-narrow">
     <img src="screenshots/ios-dns-selector.svg" alt="Illustrative mockup of the iOS DNS profile selector under Settings, General, VPN and Device Management, showing four installed profiles with one checked as active" loading="lazy">
     <figcaption>Settings &rarr; General &rarr; VPN &amp; Device Management is also where you switch between profiles you've installed.</figcaption>
   </figure>
@@ -636,7 +701,7 @@
       <li>Paste in the hostname and tap <strong>Save</strong>.</li>
     </ol>
   </div>
-  <figure>
+  <figure class="mockup-narrow">
     <img src="screenshots/android-private-dns.svg" alt="Illustrative mockup of the Android Private DNS setting" loading="lazy">
   </figure>
 </section>
@@ -654,10 +719,34 @@
 <section id="check-it-is-working">
   <h2>Check it is working</h2>
   <ol>
-    <li>Visit your chosen provider's DNS test page in a browser, for example <code>1.1.1.1/help</code> (Cloudflare) or the test page listed on your provider's homepage above, and confirm it reports the expected resolver.</li>
-    <li>Load a page you know carries ads and confirm they no longer appear (for the profiles above that block ads &mdash; remember the two Cloudflare profiles do not).</li>
+    <li>Visit <a href="https://dnsleaktest.com/" rel="noopener">dnsleaktest.com</a> and confirm it reports the resolver you just installed, not your ISP's default. You can also use <code>1.1.1.1/help</code> (Cloudflare) or the test page listed on your provider's homepage above.</li>
+    <li>For a profile above that blocks ads, visit <a href="https://adblock-tester.com/" rel="noopener">adblock-tester.com</a> and confirm it reports ads and trackers as blocked. Skip this for the two Cloudflare profiles &mdash; they filter malware only, not ads.</li>
     <li>If nothing changed, re-check <strong>Settings &rarr; General &rarr; VPN &amp; Device Management</strong> (iOS/macOS) or <strong>Private DNS</strong> (Android) to confirm the profile is installed and active, not just downloaded.</li>
   </ol>
+
+  <div class="note">
+    <strong>dnsleaktest.com and adblock-tester.com are independent third-party sites</strong>
+    <p>They are not part of this project and not operated by any of the DNS providers listed above. Visiting them sends a request from your device directly to that site to run the check &mdash; nothing about the result is sent to or seen by this project. Their own privacy practices are their own; this project does not vouch for them beyond linking to well-known, commonly recommended tools.</p>
+  </div>
+
+  <figure class="mockup-wide">
+    <img src="screenshots/dns-verification.svg" alt="Illustrative mockup of a DNS resolver check result in a browser, showing a passing result that matches the installed profile" loading="lazy">
+    <figcaption>Illustrative mockup of what a passing result looks like &mdash; not a real screenshot of either test site.</figcaption>
+  </figure>
+</section>
+
+<section id="speed-test">
+  <h2>Compare resolver speed</h2>
+  <p>Every profile above is encrypted; how fast each one answers depends on your own location and network, not on anything this project controls. Rather than publish a fixed number that would be wrong for most visitors, this runs a real, timed DNS query to each provider directly from your browser.</p>
+
+  <div class="note">
+    <strong>This is the one thing on this page that runs automatically-on-click network requests to nine third parties.</strong>
+    <p>Nothing is sent to this project. Each request goes straight from your browser to that provider's own resolver, the same way your device would if you installed its profile. A provider blocked or filtered on your network (this happens &mdash; some networks block certain DNS providers outright) will show as unreachable rather than a time.</p>
+  </div>
+
+  <button type="button" class="btn btn-primary" id="speed-test-btn">Test speed</button>
+  <p id="speed-test-status" aria-live="polite"></p>
+  <div id="speed-test-results"></div>
 </section>
 
 <section id="faq">
@@ -745,6 +834,117 @@
       });
     });
   });
+
+  (function () {
+    // Same RFC 8484 GET query the project's own CI liveness check uses
+    // (dnsprofiles/liveness.py), so a "healthy" result here means the same
+    // thing it means there: a real DNS response came back, not just a 200.
+    var RFC8484_QUERY = 'AAABAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB';
+    var TIMEOUT_MS = 6000;
+
+    var PROVIDERS = [
+      { slug: 'adguard-default', name: 'AdGuard DNS — Ad Blocking', color: '#2E5AAC', dohUrl: 'https://dns.adguard-dns.com/dns-query' },
+      { slug: 'adguard-family', name: 'AdGuard DNS — Family Protection', color: '#2E5AAC', dohUrl: 'https://family.adguard-dns.com/dns-query' },
+      { slug: 'controld-ads', name: 'ControlD Free — Ad Blocking', color: '#00B8A9', dohUrl: 'https://freedns.controld.com/p2' },
+      { slug: 'controld-family', name: 'ControlD Free — Family', color: '#00B8A9', dohUrl: 'https://freedns.controld.com/family' },
+      { slug: 'cloudflare-security', name: 'Cloudflare — Security', color: '#F6821F', dohUrl: 'https://security.cloudflare-dns.com/dns-query' },
+      { slug: 'cloudflare-family', name: 'Cloudflare — Family', color: '#F6821F', dohUrl: 'https://family.cloudflare-dns.com/dns-query' },
+      { slug: 'cleanbrowsing-family', name: 'CleanBrowsing — Family Filter', color: '#2FA84F', dohUrl: 'https://doh.cleanbrowsing.org/doh/family-filter/' },
+      { slug: 'cleanbrowsing-security', name: 'CleanBrowsing — Security Filter', color: '#2FA84F', dohUrl: 'https://doh.cleanbrowsing.org/doh/security-filter/' },
+      { slug: 'mullvad-adblock', name: 'Mullvad DNS — Adblock', color: '#7C4DFF', dohUrl: 'https://adblock.dns.mullvad.net/dns-query' }
+    ];
+
+    var btn = document.getElementById('speed-test-btn');
+    var status = document.getElementById('speed-test-status');
+    var results = document.getElementById('speed-test-results');
+    if (!btn || !results) return;
+
+    function rowFor(provider) {
+      var row = document.createElement('div');
+      row.className = 'speed-row';
+      row.dataset.slug = provider.slug;
+      row.innerHTML =
+        '<span class="speed-name">' + provider.name + '</span>' +
+        '<span class="speed-track"><span class="speed-fill" style="background:' + provider.color + '"></span></span>' +
+        '<span class="speed-value">…</span>';
+      return row;
+    }
+
+    function timedQuery(provider) {
+      var controller = ('AbortController' in window) ? new AbortController() : null;
+      var timer = controller ? setTimeout(function () { controller.abort(); }, TIMEOUT_MS) : null;
+      var started = performance.now();
+      var separator = provider.dohUrl.indexOf('?') === -1 ? '?' : '&';
+      return fetch(provider.dohUrl + separator + 'dns=' + RFC8484_QUERY, {
+        mode: 'no-cors',
+        cache: 'no-store',
+        headers: { accept: 'application/dns-message' },
+        signal: controller ? controller.signal : undefined
+      }).then(function () {
+        if (timer) clearTimeout(timer);
+        return { ok: true, ms: Math.round(performance.now() - started) };
+      }, function () {
+        if (timer) clearTimeout(timer);
+        return { ok: false, ms: null };
+      });
+    }
+
+    btn.addEventListener('click', function () {
+      btn.disabled = true;
+      status.textContent = 'Testing all nine providers from your browser — this takes a few seconds…';
+      results.innerHTML = '';
+      var rows = {};
+      PROVIDERS.forEach(function (provider) {
+        var row = rowFor(provider);
+        rows[provider.slug] = row;
+        results.appendChild(row);
+      });
+
+      var settled = PROVIDERS.map(function (provider) {
+        return timedQuery(provider).then(function (result) {
+          var row = rows[provider.slug];
+          var valueEl = row.querySelector('.speed-value');
+          if (result.ok) {
+            valueEl.textContent = result.ms + ' ms';
+          } else {
+            valueEl.textContent = 'Unreachable';
+            valueEl.classList.add('is-error');
+          }
+          return { provider: provider, row: row, result: result };
+        });
+      });
+
+      Promise.all(settled).then(function (outcomes) {
+        var reachable = outcomes.filter(function (o) { return o.result.ok; });
+        var slowest = reachable.reduce(function (max, o) { return Math.max(max, o.result.ms); }, 1);
+
+        outcomes.forEach(function (o) {
+          var fill = o.row.querySelector('.speed-fill');
+          if (o.result.ok) {
+            var pct = Math.max(6, Math.round(100 - (o.result.ms / slowest) * 90));
+            fill.style.width = pct + '%';
+          } else {
+            fill.style.width = '100%';
+            fill.style.background = 'var(--warn-border)';
+          }
+        });
+
+        outcomes.sort(function (a, b) {
+          if (a.result.ok && !b.result.ok) return -1;
+          if (!a.result.ok && b.result.ok) return 1;
+          if (!a.result.ok && !b.result.ok) return 0;
+          return a.result.ms - b.result.ms;
+        });
+        outcomes.forEach(function (o) { results.appendChild(o.row); });
+
+        var reachableCount = reachable.length;
+        status.textContent = reachableCount === PROVIDERS.length
+          ? 'Done — fastest first.'
+          : 'Done — fastest first. ' + (PROVIDERS.length - reachableCount) + ' provider(s) were unreachable on your network.';
+        btn.disabled = false;
+      });
+    });
+  })();
 </script>
 
 </body>

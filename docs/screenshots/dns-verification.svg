@@ -1,0 +1,41 @@
+<svg viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Helvetica, Arial, sans-serif">
+<title>Illustrative mockup of a DNS resolver check result in a browser</title>
+<desc>Illustrative mockup, not a real screenshot. A browser window with the address bar reading dnsleaktest.com and a result panel showing the resolver now in use.</desc>
+
+<rect x="0" y="0" width="720" height="480" fill="#F4F5F7"/>
+
+<!-- browser window -->
+<rect x="30" y="30" width="660" height="420" rx="12" fill="#FFFFFF" stroke="#D8D8DC" stroke-width="1"/>
+
+<!-- title bar -->
+<rect x="30" y="30" width="660" height="44" rx="12" fill="#EFEFF2"/>
+<rect x="30" y="62" width="660" height="12" fill="#EFEFF2"/>
+<circle cx="54" cy="52" r="6" fill="#FF5F57"/>
+<circle cx="74" cy="52" r="6" fill="#FEBC2E"/>
+<circle cx="94" cy="52" r="6" fill="#28C840"/>
+
+<!-- address bar -->
+<rect x="130" y="42" width="440" height="20" rx="10" fill="#FFFFFF" stroke="#D8D8DC" stroke-width="1"/>
+<circle cx="146" cy="52" r="5" fill="none" stroke="#6E6E73" stroke-width="1.5"/>
+<line x1="149.5" y1="55.5" x2="153" y2="59" stroke="#6E6E73" stroke-width="1.5"/>
+<text x="162" y="56" font-size="11" fill="#3C3C43">dnsleaktest.com</text>
+
+<!-- page content -->
+<text x="60" y="118" font-size="16" font-weight="700" fill="#1C1C1E">DNS resolver check</text>
+<text x="60" y="140" font-size="12" fill="#5F6368">This page shows which DNS server your device is actually using right now.</text>
+
+<rect x="60" y="164" width="600" height="80" rx="10" fill="#EAF7EE" stroke="#BFE6C8" stroke-width="1"/>
+<circle cx="90" cy="204" r="16" fill="#2FA84F"/>
+<path d="M82 204 l6 6 l12 -14" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="118" y="198" font-size="13" font-weight="700" fill="#1C1C1E">Your DNS resolver: AdGuard Software Limited</text>
+<text x="118" y="218" font-size="11.5" fill="#3C3C43">This matches the profile you installed &#8212; your DNS queries are going where you chose.</text>
+
+<rect x="60" y="264" width="600" height="80" rx="10" fill="#FDECEC" stroke="#F3C6C6" stroke-width="1"/>
+<circle cx="90" cy="304" r="16" fill="#D93025"/>
+<line x1="83" y1="297" x2="97" y2="311" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+<line x1="97" y1="297" x2="83" y2="311" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+<text x="118" y="298" font-size="13" font-weight="700" fill="#1C1C1E">If this instead shows your ISP's name&#8230;</text>
+<text x="118" y="318" font-size="11.5" fill="#3C3C43">the profile is not active &#8212; re-check Settings, or the profile was removed.</text>
+
+<text x="60" y="392" font-size="11.5" fill="#6E6E73">Independent third-party site &#8212; not part of this project or any DNS provider above.</text>
+</svg>
