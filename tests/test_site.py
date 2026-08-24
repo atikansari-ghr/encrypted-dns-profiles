@@ -34,3 +34,13 @@ def test_names_every_android_dot_hostname():
 def test_explains_the_unsigned_warning():
     html = INDEX.read_text(encoding="utf-8").lower()
     assert "not signed" in html
+
+
+def test_every_qr_card_can_toggle_between_doh_and_dot():
+    html = INDEX.read_text(encoding="utf-8")
+    for spec in load_catalog(DEFAULT_CATALOG_PATH):
+        assert f'data-slug="{spec.slug}"' in html
+        assert f'src="qr/{spec.slug}-doh.svg"' in html
+    assert 'data-protocol="doh"' in html
+    assert 'data-protocol="dot"' in html
+    assert html.count('data-protocol="doh"') == html.count('data-protocol="dot"')

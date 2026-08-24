@@ -27,9 +27,13 @@ def generate_qr_codes(
     for spec in load_catalog(catalog_path):
         for protocol in PROTOCOLS:
             path = output_dir / f"{spec.slug}-{protocol}.svg"
-            segno.make(profile_url(spec.slug, protocol), error="m").save(
-                str(path), kind="svg", scale=4, border=2, dark="#111111", light=None
-            )
+            # Pass an open binary handle rather than a path string: segno's
+            # save() opens paths in text mode, which on Windows rewrites LF
+            # to CRLF and breaks byte-identical regeneration.
+            with open(path, "wb") as handle:
+                segno.make(profile_url(spec.slug, protocol), error="m").save(
+                    handle, kind="svg", scale=4, border=2, dark="#111111", light=None
+                )
             written.append(path)
     return sorted(written, key=lambda path: path.name)
 

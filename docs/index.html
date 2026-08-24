@@ -264,6 +264,30 @@
     margin-top: 0.25rem;
   }
 
+  .qr-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 0.35rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .qr-toggle-btn {
+    background: var(--bg-raised);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .qr-toggle-btn.is-active {
+    background: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+  }
+
   .callout {
     border: 1px solid var(--warn-border);
     background: var(--warn-bg);
@@ -372,7 +396,11 @@
         <code>dns.adguard-dns.com</code>
         <button class="copy-btn" type="button" data-copy="dns.adguard-dns.com">Copy</button>
       </div>
-      <figure class="qr">
+      <figure class="qr" data-slug="adguard-default" data-name="AdGuard DNS Ad Blocking">
+        <div class="qr-toggle" role="group" aria-label="QR code protocol">
+          <button type="button" class="qr-toggle-btn is-active" data-protocol="doh" aria-pressed="true">DoH</button>
+          <button type="button" class="qr-toggle-btn" data-protocol="dot" aria-pressed="false">DoT</button>
+        </div>
         <img src="qr/adguard-default-doh.svg" alt="QR code linking to the AdGuard DNS Ad Blocking DoH profile" width="140" height="140" loading="lazy">
         <figcaption>Scan to install (DoH)</figcaption>
       </figure>
@@ -391,7 +419,11 @@
         <code>family.adguard-dns.com</code>
         <button class="copy-btn" type="button" data-copy="family.adguard-dns.com">Copy</button>
       </div>
-      <figure class="qr">
+      <figure class="qr" data-slug="adguard-family" data-name="AdGuard DNS Family Protection">
+        <div class="qr-toggle" role="group" aria-label="QR code protocol">
+          <button type="button" class="qr-toggle-btn is-active" data-protocol="doh" aria-pressed="true">DoH</button>
+          <button type="button" class="qr-toggle-btn" data-protocol="dot" aria-pressed="false">DoT</button>
+        </div>
         <img src="qr/adguard-family-doh.svg" alt="QR code linking to the AdGuard DNS Family Protection DoH profile" width="140" height="140" loading="lazy">
         <figcaption>Scan to install (DoH)</figcaption>
       </figure>
@@ -410,7 +442,11 @@
         <code>adblock.dns.mullvad.net</code>
         <button class="copy-btn" type="button" data-copy="adblock.dns.mullvad.net">Copy</button>
       </div>
-      <figure class="qr">
+      <figure class="qr" data-slug="mullvad-adblock" data-name="Mullvad DNS Adblock">
+        <div class="qr-toggle" role="group" aria-label="QR code protocol">
+          <button type="button" class="qr-toggle-btn is-active" data-protocol="doh" aria-pressed="true">DoH</button>
+          <button type="button" class="qr-toggle-btn" data-protocol="dot" aria-pressed="false">DoT</button>
+        </div>
         <img src="qr/mullvad-adblock-doh.svg" alt="QR code linking to the Mullvad DNS Adblock DoH profile" width="140" height="140" loading="lazy">
         <figcaption>Scan to install (DoH)</figcaption>
       </figure>
@@ -429,7 +465,11 @@
         <code>p2.freedns.controld.com</code>
         <button class="copy-btn" type="button" data-copy="p2.freedns.controld.com">Copy</button>
       </div>
-      <figure class="qr">
+      <figure class="qr" data-slug="controld-ads" data-name="ControlD Free Ad Blocking">
+        <div class="qr-toggle" role="group" aria-label="QR code protocol">
+          <button type="button" class="qr-toggle-btn is-active" data-protocol="doh" aria-pressed="true">DoH</button>
+          <button type="button" class="qr-toggle-btn" data-protocol="dot" aria-pressed="false">DoT</button>
+        </div>
         <img src="qr/controld-ads-doh.svg" alt="QR code linking to the ControlD Free Ad Blocking DoH profile" width="140" height="140" loading="lazy">
         <figcaption>Scan to install (DoH)</figcaption>
       </figure>
@@ -448,7 +488,11 @@
         <code>family.freedns.controld.com</code>
         <button class="copy-btn" type="button" data-copy="family.freedns.controld.com">Copy</button>
       </div>
-      <figure class="qr">
+      <figure class="qr" data-slug="controld-family" data-name="ControlD Free Family">
+        <div class="qr-toggle" role="group" aria-label="QR code protocol">
+          <button type="button" class="qr-toggle-btn is-active" data-protocol="doh" aria-pressed="true">DoH</button>
+          <button type="button" class="qr-toggle-btn" data-protocol="dot" aria-pressed="false">DoT</button>
+        </div>
         <img src="qr/controld-family-doh.svg" alt="QR code linking to the ControlD Free Family DoH profile" width="140" height="140" loading="lazy">
         <figcaption>Scan to install (DoH)</figcaption>
       </figure>
@@ -468,7 +512,11 @@
         <code>security.cloudflare-dns.com</code>
         <button class="copy-btn" type="button" data-copy="security.cloudflare-dns.com">Copy</button>
       </div>
-      <figure class="qr">
+      <figure class="qr" data-slug="cloudflare-security" data-name="Cloudflare Security">
+        <div class="qr-toggle" role="group" aria-label="QR code protocol">
+          <button type="button" class="qr-toggle-btn is-active" data-protocol="doh" aria-pressed="true">DoH</button>
+          <button type="button" class="qr-toggle-btn" data-protocol="dot" aria-pressed="false">DoT</button>
+        </div>
         <img src="qr/cloudflare-security-doh.svg" alt="QR code linking to the Cloudflare Security DoH profile" width="140" height="140" loading="lazy">
         <figcaption>Scan to install (DoH)</figcaption>
       </figure>
@@ -488,7 +536,11 @@
         <code>family.cloudflare-dns.com</code>
         <button class="copy-btn" type="button" data-copy="family.cloudflare-dns.com">Copy</button>
       </div>
-      <figure class="qr">
+      <figure class="qr" data-slug="cloudflare-family" data-name="Cloudflare Family">
+        <div class="qr-toggle" role="group" aria-label="QR code protocol">
+          <button type="button" class="qr-toggle-btn is-active" data-protocol="doh" aria-pressed="true">DoH</button>
+          <button type="button" class="qr-toggle-btn" data-protocol="dot" aria-pressed="false">DoT</button>
+        </div>
         <img src="qr/cloudflare-family-doh.svg" alt="QR code linking to the Cloudflare Family DoH profile" width="140" height="140" loading="lazy">
         <figcaption>Scan to install (DoH)</figcaption>
       </figure>
@@ -507,7 +559,11 @@
         <code>family-filter-dns.cleanbrowsing.org</code>
         <button class="copy-btn" type="button" data-copy="family-filter-dns.cleanbrowsing.org">Copy</button>
       </div>
-      <figure class="qr">
+      <figure class="qr" data-slug="cleanbrowsing-family" data-name="CleanBrowsing Family Filter">
+        <div class="qr-toggle" role="group" aria-label="QR code protocol">
+          <button type="button" class="qr-toggle-btn is-active" data-protocol="doh" aria-pressed="true">DoH</button>
+          <button type="button" class="qr-toggle-btn" data-protocol="dot" aria-pressed="false">DoT</button>
+        </div>
         <img src="qr/cleanbrowsing-family-doh.svg" alt="QR code linking to the CleanBrowsing Family Filter DoH profile" width="140" height="140" loading="lazy">
         <figcaption>Scan to install (DoH)</figcaption>
       </figure>
@@ -526,7 +582,11 @@
         <code>security-filter-dns.cleanbrowsing.org</code>
         <button class="copy-btn" type="button" data-copy="security-filter-dns.cleanbrowsing.org">Copy</button>
       </div>
-      <figure class="qr">
+      <figure class="qr" data-slug="cleanbrowsing-security" data-name="CleanBrowsing Security Filter">
+        <div class="qr-toggle" role="group" aria-label="QR code protocol">
+          <button type="button" class="qr-toggle-btn is-active" data-protocol="doh" aria-pressed="true">DoH</button>
+          <button type="button" class="qr-toggle-btn" data-protocol="dot" aria-pressed="false">DoT</button>
+        </div>
         <img src="qr/cleanbrowsing-security-doh.svg" alt="QR code linking to the CleanBrowsing Security Filter DoH profile" width="140" height="140" loading="lazy">
         <figcaption>Scan to install (DoH)</figcaption>
       </figure>
@@ -661,6 +721,28 @@
       } else {
         fallback();
       }
+    });
+  });
+
+  document.querySelectorAll('.qr[data-slug]').forEach(function (figure) {
+    var slug = figure.dataset.slug;
+    var name = figure.dataset.name;
+    var img = figure.querySelector('img');
+    var caption = figure.querySelector('figcaption');
+    var buttons = figure.querySelectorAll('.qr-toggle-btn');
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var protocol = button.dataset.protocol;
+        var label = protocol === 'doh' ? 'DoH' : 'DoT';
+        img.src = 'qr/' + slug + '-' + protocol + '.svg';
+        img.alt = 'QR code linking to the ' + name + ' ' + label + ' profile';
+        caption.textContent = 'Scan to install (' + label + ')';
+        buttons.forEach(function (b) {
+          var active = b === button;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+      });
     });
   });
 </script>
