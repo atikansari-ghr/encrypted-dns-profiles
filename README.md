@@ -102,7 +102,7 @@ Every variant, in both DoH and DoT. Links point at the install site, which serve
 
 ## Check it is working
 
-1. Visit [dnsleaktest.com](https://dnsleaktest.com/) and confirm it reports the resolver you just installed, not your ISP's default — or use `1.1.1.1/help` for Cloudflare, or the test page linked from the provider's homepage.
+1. Visit [dnsleaktest.com](https://dnsleaktest.com/) and tap **Standard test**. Confirm the result reports the resolver you just installed, not your ISP's default — or use `1.1.1.1/help` for Cloudflare, or the test page linked from the provider's homepage.
 2. For a profile that blocks ads, visit [adblock-tester.com](https://adblock-tester.com/) and confirm it reports ads and trackers as blocked. Skip this for the two Cloudflare profiles — they filter malware only, not ads.
 3. If nothing changed, re-check **Settings → General → VPN & Device Management** (iOS/macOS) or **Private DNS** (Android) to confirm the profile is installed *and active*, not just downloaded.
 

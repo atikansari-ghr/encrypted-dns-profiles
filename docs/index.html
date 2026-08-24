@@ -719,7 +719,7 @@
 <section id="check-it-is-working">
   <h2>Check it is working</h2>
   <ol>
-    <li>Visit <a href="https://dnsleaktest.com/" rel="noopener">dnsleaktest.com</a> and confirm it reports the resolver you just installed, not your ISP's default. You can also use <code>1.1.1.1/help</code> (Cloudflare) or the test page listed on your provider's homepage above.</li>
+    <li>Visit <a href="https://dnsleaktest.com/" rel="noopener">dnsleaktest.com</a> and tap <strong>Standard test</strong>. Confirm the result reports the resolver you just installed, not your ISP's default. You can also use <code>1.1.1.1/help</code> (Cloudflare) or the test page listed on your provider's homepage above.</li>
     <li>For a profile above that blocks ads, visit <a href="https://adblock-tester.com/" rel="noopener">adblock-tester.com</a> and confirm it reports ads and trackers as blocked. Skip this for the two Cloudflare profiles &mdash; they filter malware only, not ads.</li>
     <li>If nothing changed, re-check <strong>Settings &rarr; General &rarr; VPN &amp; Device Management</strong> (iOS/macOS) or <strong>Private DNS</strong> (Android) to confirm the profile is installed and active, not just downloaded.</li>
   </ol>
@@ -730,8 +730,8 @@
   </div>
 
   <figure class="mockup-wide">
-    <img src="screenshots/dns-verification.svg" alt="Illustrative mockup of a DNS resolver check result in a browser, showing a passing result that matches the installed profile" loading="lazy">
-    <figcaption>Illustrative mockup of what a passing result looks like &mdash; not a real screenshot of either test site.</figcaption>
+    <img src="screenshots/dns-verification.svg" alt="Illustrative mockup of checking a DNS resolver on dnsleaktest.com: tap Standard test on the landing page, then read the result showing whether it matches the installed profile" loading="lazy">
+    <figcaption>Illustrative mockup of the dnsleaktest.com flow &mdash; tap Standard test, then read the result. Not a real screenshot.</figcaption>
   </figure>
 </section>
 

@@ -1,7 +1,27 @@
 <svg viewBox="0 0 980 660" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, Helvetica, Arial, sans-serif">
 <title>Installing an encrypted DNS profile on iOS: download in Safari, Settings shows Profile Downloaded, then review and install</title>
 <desc>Illustrative mockup, not a real screenshot. Three iPhone screens showing the install flow for the unsigned AdGuard DNS - Ad Blocking (DoH) profile.</desc>
-<rect x="0" y="0" width="980" height="660" fill="#FAFAFB"/>
+
+<defs>
+  <filter id="ios-install-blur" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="42"/>
+  </filter>
+  <linearGradient id="ios-install-panel" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.82"/>
+    <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.68"/>
+  </linearGradient>
+  <filter id="ios-install-shadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#1C1C1E" flood-opacity="0.14"/>
+  </filter>
+</defs>
+
+<rect x="0" y="0" width="980" height="660" fill="#F4F5F7"/>
+<circle cx="90" cy="70" r="140" fill="#2E5AAC" opacity="0.28" filter="url(#ios-install-blur)"/>
+<circle cx="900" cy="80" r="150" fill="#F6821F" opacity="0.24" filter="url(#ios-install-blur)"/>
+<circle cx="490" cy="600" r="170" fill="#7C4DFF" opacity="0.22" filter="url(#ios-install-blur)"/>
+<circle cx="150" cy="580" r="130" fill="#2FA84F" opacity="0.22" filter="url(#ios-install-blur)"/>
+<circle cx="850" cy="560" r="120" fill="#00B8A9" opacity="0.22" filter="url(#ios-install-blur)"/>
+<rect x="8" y="8" width="964" height="640" rx="26" fill="url(#ios-install-panel)" stroke="#FFFFFF" stroke-width="1.5" filter="url(#ios-install-shadow)"/>
 
 <!-- Phone 1: Safari download -->
 <g transform="translate(20,10)">

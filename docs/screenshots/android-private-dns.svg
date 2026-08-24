@@ -1,7 +1,26 @@
 <svg viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg" font-family="Roboto, Helvetica, Arial, sans-serif">
 <title>Android Private DNS dialog with dns.adguard-dns.com entered as the provider hostname</title>
 <desc>Illustrative mockup, not a real screenshot. Settings, Network &amp; internet, Private DNS: the provider hostname option selected with dns.adguard-dns.com typed in.</desc>
-<rect x="0" y="0" width="400" height="700" fill="#FAFAFB"/>
+
+<defs>
+  <filter id="android-dns-blur" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="34"/>
+  </filter>
+  <linearGradient id="android-dns-panel" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.82"/>
+    <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.68"/>
+  </linearGradient>
+  <filter id="android-dns-shadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#1C1C1E" flood-opacity="0.14"/>
+  </filter>
+</defs>
+
+<rect x="0" y="0" width="400" height="700" fill="#F4F5F7"/>
+<circle cx="60" cy="100" r="130" fill="#00B8A9" opacity="0.26" filter="url(#android-dns-blur)"/>
+<circle cx="350" cy="150" r="120" fill="#2E5AAC" opacity="0.22" filter="url(#android-dns-blur)"/>
+<circle cx="340" cy="590" r="140" fill="#F6821F" opacity="0.22" filter="url(#android-dns-blur)"/>
+<circle cx="60" cy="620" r="110" fill="#7C4DFF" opacity="0.22" filter="url(#android-dns-blur)"/>
+<rect x="18" y="8" width="364" height="644" rx="26" fill="url(#android-dns-panel)" stroke="#FFFFFF" stroke-width="1.5" filter="url(#android-dns-shadow)"/>
 
 <text x="200" y="26" font-size="13" fill="#5F6368" text-anchor="middle">Settings &#8250; Network &amp; internet &#8250; Private DNS</text>
 
