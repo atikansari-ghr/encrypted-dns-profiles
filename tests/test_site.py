@@ -18,13 +18,14 @@ ALLOWED_EXTERNAL_PREFIXES = (
     "https://github.com/atikansari-ghr/",
     "https://dnsleaktest.com/",
     "https://adblock-tester.com/",
+    "https://ko-fi.com/atikansari",
 )
 
 
 def test_external_links_are_a_closed_allowlist():
-    """No external href/src beyond the project repo and the two verification
-    tools that were deliberately checked and disclosed as third-party sites.
-    The speed-test provider URLs live inside the inline script as JS string
+    """No external href/src beyond the project repo, the two verification
+    tools, and the author's own Ko-fi link, all deliberately reviewed. The
+    speed-test provider URLs live inside the inline script as JS string
     literals, not HTML attributes, so this regex does not and should not see
     them; test_speed_test_matches_the_catalogue below covers those instead.
     """
