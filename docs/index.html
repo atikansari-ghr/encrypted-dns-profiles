@@ -16,6 +16,7 @@
     --accent: #1257c4;
     --accent-text: #ffffff;
     --accent-soft: #e8f0fe;
+    --accent-shadow: rgba(18, 87, 196, 0.32);
     --warn-bg: #fdecec;
     --warn-border: #d8514a;
     --warn-text: #7a231e;
@@ -36,6 +37,7 @@
       --accent: #6fa2ff;
       --accent-text: #0b1220;
       --accent-soft: #1c2a44;
+      --accent-shadow: rgba(111, 162, 255, 0.35);
       --warn-bg: #3a1a19;
       --warn-border: #d8514a;
       --warn-text: #ffb4ae;
@@ -137,18 +139,38 @@
   .card {
     background: var(--bg-raised);
     border: 1px solid var(--border);
+    border-top: 3px solid var(--family-color, var(--accent));
     border-radius: 10px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .card[data-family="adguard"] { --family-color: #2E5AAC; }
+  .card[data-family="controld"] { --family-color: #00B8A9; }
+  .card[data-family="cloudflare"] { --family-color: #F6821F; }
+  .card[data-family="cleanbrowsing"] { --family-color: #2FA84F; }
+
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1 1 auto;
   }
 
   .card .provider {
     font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: var(--text-muted);
+    color: var(--family-color, var(--text-muted));
     margin: 0;
   }
 
@@ -226,6 +248,13 @@
     background: var(--accent);
     color: var(--accent-text);
     flex: 1 1 auto;
+    box-shadow: 0 2px 8px var(--accent-shadow);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px var(--accent-shadow);
   }
 
   .btn-secondary {
@@ -499,11 +528,13 @@
 
   <div class="card-grid">
 
-    <article class="card" id="adguard-default">
-      <p class="provider">AdGuard</p>
-      <h3>AdGuard DNS &mdash; Ad Blocking</h3>
-      <p class="blocks">Blocks: Ads and trackers</p>
-      <p class="operator">Operated by AdGuard Software Limited. Homepage: <code>adguard-dns.io</code></p>
+    <article class="card" id="adguard-default" data-family="adguard">
+      <div class="card-info">
+        <p class="provider">AdGuard</p>
+        <h3>AdGuard DNS &mdash; Ad Blocking</h3>
+        <p class="blocks">Blocks: Ads and trackers</p>
+        <p class="operator">Operated by AdGuard Software Limited. Homepage: <code>adguard-dns.io</code></p>
+      </div>
 
       <div class="platform-zone">
         <p class="platform-label">iOS &middot; iPadOS &middot; macOS</p>
@@ -536,11 +567,13 @@
       </div>
     </article>
 
-    <article class="card" id="adguard-family">
-      <p class="provider">AdGuard</p>
-      <h3>AdGuard DNS &mdash; Family Protection</h3>
-      <p class="blocks">Blocks: Ads, trackers, adult content, and enforces safe search</p>
-      <p class="operator">Operated by AdGuard Software Limited. Homepage: <code>adguard-dns.io</code></p>
+    <article class="card" id="adguard-family" data-family="adguard">
+      <div class="card-info">
+        <p class="provider">AdGuard</p>
+        <h3>AdGuard DNS &mdash; Family Protection</h3>
+        <p class="blocks">Blocks: Ads, trackers, adult content, and enforces safe search</p>
+        <p class="operator">Operated by AdGuard Software Limited. Homepage: <code>adguard-dns.io</code></p>
+      </div>
 
       <div class="platform-zone">
         <p class="platform-label">iOS &middot; iPadOS &middot; macOS</p>
@@ -573,11 +606,13 @@
       </div>
     </article>
 
-    <article class="card" id="controld-ads">
-      <p class="provider">ControlD</p>
-      <h3>ControlD Free &mdash; Ad Blocking</h3>
-      <p class="blocks">Blocks: Ads, trackers and malware</p>
-      <p class="operator">Operated by Windscribe under the ControlD brand. Free tier, no account required. Homepage: <code>controld.com/free-dns</code></p>
+    <article class="card" id="controld-ads" data-family="controld">
+      <div class="card-info">
+        <p class="provider">ControlD</p>
+        <h3>ControlD Free &mdash; Ad Blocking</h3>
+        <p class="blocks">Blocks: Ads, trackers and malware</p>
+        <p class="operator">Operated by Windscribe under the ControlD brand. Free tier, no account required. Homepage: <code>controld.com/free-dns</code></p>
+      </div>
 
       <div class="platform-zone">
         <p class="platform-label">iOS &middot; iPadOS &middot; macOS</p>
@@ -610,11 +645,13 @@
       </div>
     </article>
 
-    <article class="card" id="controld-family">
-      <p class="provider">ControlD</p>
-      <h3>ControlD Free &mdash; Family</h3>
-      <p class="blocks">Blocks: Ads, trackers, malware and adult content</p>
-      <p class="operator">Operated by Windscribe under the ControlD brand. Free tier, no account required. Homepage: <code>controld.com/free-dns</code></p>
+    <article class="card" id="controld-family" data-family="controld">
+      <div class="card-info">
+        <p class="provider">ControlD</p>
+        <h3>ControlD Free &mdash; Family</h3>
+        <p class="blocks">Blocks: Ads, trackers, malware and adult content</p>
+        <p class="operator">Operated by Windscribe under the ControlD brand. Free tier, no account required. Homepage: <code>controld.com/free-dns</code></p>
+      </div>
 
       <div class="platform-zone">
         <p class="platform-label">iOS &middot; iPadOS &middot; macOS</p>
@@ -647,12 +684,14 @@
       </div>
     </article>
 
-    <article class="card" id="cloudflare-security">
-      <p class="provider">Cloudflare</p>
-      <h3>Cloudflare &mdash; Security</h3>
-      <p class="blocks">Blocks: Malware only &mdash; does not block ads</p>
-      <p class="no-ad-block">This profile does NOT block ads or trackers. Choose an AdGuard or ControlD profile above for ad blocking.</p>
-      <p class="operator">Operated by Cloudflare. Homepage: <code>one.one.one.one/family/</code></p>
+    <article class="card" id="cloudflare-security" data-family="cloudflare">
+      <div class="card-info">
+        <p class="provider">Cloudflare</p>
+        <h3>Cloudflare &mdash; Security</h3>
+        <p class="blocks">Blocks: Malware only &mdash; does not block ads</p>
+        <p class="no-ad-block">This profile does NOT block ads or trackers. Choose an AdGuard or ControlD profile above for ad blocking.</p>
+        <p class="operator">Operated by Cloudflare. Homepage: <code>one.one.one.one/family/</code></p>
+      </div>
 
       <div class="platform-zone">
         <p class="platform-label">iOS &middot; iPadOS &middot; macOS</p>
@@ -685,12 +724,14 @@
       </div>
     </article>
 
-    <article class="card" id="cloudflare-family">
-      <p class="provider">Cloudflare</p>
-      <h3>Cloudflare &mdash; Family</h3>
-      <p class="blocks">Blocks: Malware and adult content &mdash; does not block ads</p>
-      <p class="no-ad-block">This profile does NOT block ads or trackers. Choose an AdGuard or ControlD family profile above if you want both.</p>
-      <p class="operator">Operated by Cloudflare. Homepage: <code>one.one.one.one/family/</code></p>
+    <article class="card" id="cloudflare-family" data-family="cloudflare">
+      <div class="card-info">
+        <p class="provider">Cloudflare</p>
+        <h3>Cloudflare &mdash; Family</h3>
+        <p class="blocks">Blocks: Malware and adult content &mdash; does not block ads</p>
+        <p class="no-ad-block">This profile does NOT block ads or trackers. Choose an AdGuard or ControlD family profile above if you want both.</p>
+        <p class="operator">Operated by Cloudflare. Homepage: <code>one.one.one.one/family/</code></p>
+      </div>
 
       <div class="platform-zone">
         <p class="platform-label">iOS &middot; iPadOS &middot; macOS</p>
@@ -723,11 +764,13 @@
       </div>
     </article>
 
-    <article class="card" id="cleanbrowsing-family">
-      <p class="provider">CleanBrowsing</p>
-      <h3>CleanBrowsing &mdash; Family Filter</h3>
-      <p class="blocks">Blocks: Adult content, and enforces safe search</p>
-      <p class="operator">Operated by CleanBrowsing. Does not block advertising. Homepage: <code>cleanbrowsing.org/filters/</code></p>
+    <article class="card" id="cleanbrowsing-family" data-family="cleanbrowsing">
+      <div class="card-info">
+        <p class="provider">CleanBrowsing</p>
+        <h3>CleanBrowsing &mdash; Family Filter</h3>
+        <p class="blocks">Blocks: Adult content, and enforces safe search</p>
+        <p class="operator">Operated by CleanBrowsing. Does not block advertising. Homepage: <code>cleanbrowsing.org/filters/</code></p>
+      </div>
 
       <div class="platform-zone">
         <p class="platform-label">iOS &middot; iPadOS &middot; macOS</p>
@@ -760,11 +803,13 @@
       </div>
     </article>
 
-    <article class="card" id="cleanbrowsing-security">
-      <p class="provider">CleanBrowsing</p>
-      <h3>CleanBrowsing &mdash; Security Filter</h3>
-      <p class="blocks">Blocks: Malware and phishing &mdash; does not block ads</p>
-      <p class="operator">Operated by CleanBrowsing. Does not block advertising or adult content. Homepage: <code>cleanbrowsing.org/filters/</code></p>
+    <article class="card" id="cleanbrowsing-security" data-family="cleanbrowsing">
+      <div class="card-info">
+        <p class="provider">CleanBrowsing</p>
+        <h3>CleanBrowsing &mdash; Security Filter</h3>
+        <p class="blocks">Blocks: Malware and phishing &mdash; does not block ads</p>
+        <p class="operator">Operated by CleanBrowsing. Does not block advertising or adult content. Homepage: <code>cleanbrowsing.org/filters/</code></p>
+      </div>
 
       <div class="platform-zone">
         <p class="platform-label">iOS &middot; iPadOS &middot; macOS</p>

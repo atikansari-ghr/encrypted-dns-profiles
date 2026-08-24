@@ -70,7 +70,7 @@ def test_every_card_has_an_id_matching_its_slug():
     """
     html = INDEX.read_text(encoding="utf-8")
     for spec in load_catalog(DEFAULT_CATALOG_PATH):
-        assert f'<article class="card" id="{spec.slug}">' in html
+        assert f'<article class="card" id="{spec.slug}"' in html
 
 
 def test_every_card_has_an_android_anchor_qr():
