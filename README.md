@@ -6,6 +6,8 @@
 
 Ready-to-install DNS configuration profiles that switch your device to an encrypted resolver, headlined by AdGuard's ad-blocking and family-protection resolvers. Tap a link, install the profile, and it applies to every app on the device in under a minute — no app to install, no account, and no VPN. Only DNS lookups move to the new resolver, encrypted; your actual traffic still goes straight to each site, exactly as before.
 
+> **This is not a VPN.** Your traffic still goes directly to the sites you visit — only the DNS lookup is redirected and encrypted. There is no separate app, no server relaying your browsing, and nothing to sign in to. Once installed, it applies system-wide: every app uses the new resolver, not just your browser — and on every network. Whether the device is on Wi-Fi or on cellular data (4G/5G), DNS queries resolve through the encrypted resolver either way, with nothing extra to set up per network.
+
 Install site: **[atikansari-ghr.github.io/encrypted-dns-profiles](https://atikansari-ghr.github.io/encrypted-dns-profiles)**
 
 ## Screenshots

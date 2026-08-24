@@ -363,6 +363,31 @@
     margin: 0.75rem 0;
   }
 
+  .highlight {
+    border: 1px solid var(--accent);
+    background: var(--accent-soft);
+    color: var(--text);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin: 0.9rem 0;
+  }
+
+  .highlight strong {
+    display: block;
+    color: var(--accent);
+    font-size: 1.02em;
+    margin-bottom: 0.4rem;
+  }
+
+  .highlight ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .highlight li {
+    margin: 0.3rem 0;
+  }
+
   figure {
     margin: 0.75rem 0;
   }
@@ -431,8 +456,14 @@
 <section id="what-this-does">
   <h2>What this does</h2>
   <p>A DNS profile changes which server your device asks to translate domain names (like <code>example.com</code>) into addresses. Installing one of the profiles below tells your device to send those lookups, encrypted, to a resolver that also filters out ad and tracking domains before they ever load.</p>
-  <p><strong>This is not a VPN.</strong> Your traffic still goes directly to the sites you visit &mdash; only the DNS lookup is redirected and encrypted. There is no separate app, no server relaying your browsing, and nothing to sign in to.</p>
-  <p>Once installed, the profile applies system-wide: every app on the device uses the new resolver, not just your browser.</p>
+  <div class="highlight">
+    <strong>This is not a VPN.</strong>
+    <ul>
+      <li>Your traffic still goes directly to the sites you visit &mdash; only the DNS lookup is redirected and encrypted. There is no separate app, no server relaying your browsing, and nothing to sign in to.</li>
+      <li>Once installed, the profile applies system-wide: every app on the device uses the new resolver, not just your browser.</li>
+      <li>It works the same way on every network &mdash; Wi-Fi or cellular data (4G/5G) &mdash; with nothing extra to set up per network. Your DNS queries resolve through the encrypted resolver either way.</li>
+    </ul>
+  </div>
 </section>
 
 <section id="choose-a-profile">
