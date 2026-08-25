@@ -71,7 +71,64 @@
   }
 
   header {
+    position: relative;
+    overflow: hidden;
     border-bottom: 1px solid var(--border);
+    padding-bottom: 1.25rem;
+  }
+
+  header::before,
+  header::after {
+    content: "";
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    filter: blur(70px);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  header::before {
+    top: -180px;
+    left: -120px;
+    background: var(--accent);
+    opacity: 0.22;
+  }
+
+  header::after {
+    top: -160px;
+    right: -140px;
+    background: #2FA84F;
+    opacity: 0.16;
+  }
+
+  header > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .header-icon {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    color: var(--accent);
+  }
+
+  .byline {
+    margin: 0 0 0.6rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .byline strong {
+    color: var(--text);
   }
 
   header h1 {
@@ -87,6 +144,42 @@
   header a.repo-link {
     display: inline-block;
     font-size: 0.9rem;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin: 0.75rem 0 1rem;
+  }
+
+  @media (min-width: 620px) {
+    .feature-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .feature-icon {
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    margin-top: 0.1rem;
+    color: var(--accent);
+  }
+
+  .feature strong {
+    display: block;
+    font-size: 0.88rem;
+  }
+
+  .feature span {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-muted);
   }
 
   h2 {
@@ -505,8 +598,35 @@
 <body>
 
 <header>
-  <h1>Encrypted DNS Profiles</h1>
+  <div class="header-top">
+    <svg class="header-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M24 4 L42 11 V22 C42 33 34.5 41 24 44 C13.5 41 6 33 6 22 V11 Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M16 24 L21.5 29.5 L33 17" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h1>Encrypted DNS Profiles</h1>
+  </div>
+  <p class="byline">by <strong>Atik Ansari</strong></p>
   <p>Installable configuration profiles that switch your iPhone, iPad, Mac, or Android device to an encrypted DNS resolver &mdash; no app, no VPN, no account. Ad and tracker blocking happens at the DNS level, before a single request reaches your browser: fewer ads, fewer tracking pixels, and fewer of the pop-ups and redirects that ride in on ad networks. Several of the profiles below go further and block known malware and phishing domains outright, so a poisoned link or a fake login page never gets the chance to load. Setting this up for a child's device? The family-filtering profiles add adult-content blocking and enforced safe search on top &mdash; still one profile, still nothing extra to install. Not sure where to start? AdGuard's ad-blocking and family-protection profiles cover the most ground; the comparison table below shows exactly what every profile blocks.</p>
+
+  <div class="feature-grid">
+    <div class="feature">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <span><strong>DNS-level filtering</strong>Ads, trackers, malware &amp; more</span>
+    </div>
+    <div class="feature">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.8"/></svg>
+      <span><strong>Not a VPN</strong>Your traffic goes straight through</span>
+    </div>
+    <div class="feature">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 20h8M12 16v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <span><strong>Every app, every network</strong>iOS, iPadOS, macOS &amp; Android</span>
+    </div>
+    <div class="feature">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M13 3 5 13h6l-1 8 8-10h-6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <span><strong>Free, no account</strong>Install in under a minute</span>
+    </div>
+  </div>
+
   <a class="repo-link" href="https://github.com/atikansari-ghr/encrypted-dns-profiles">Source on GitHub</a>
 </header>
 
